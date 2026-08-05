@@ -51,10 +51,10 @@ export const galleryItems = [
 ];
 
 export const team = [
-  { name: "Rubul Ahmed", role: "Founder and Program Director" },
-  { name: "Arif", role: "President" },
-  { name: "Mdisbcs", role: "Education Coordinator" },
-  { name: "Nsdouu", role: "Volunteer Manager" },
+  { name: "Rubul Ahmed", role: "Founder and General Secretary" },
+  { name: "Ariful Hassan Khan", role: "President" },
+  { name: "Hafizur Rahman Bhuyan", role: "Vice-President" },
+  { name: "Habibar Rahman", role: "Assistant Secretary" },
 ];
 
 export const reports = [
