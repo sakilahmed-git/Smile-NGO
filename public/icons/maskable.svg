@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="SMILE NGO icon">
+  <rect width="512" height="512" fill="#e45f35"/>
+  <circle cx="256" cy="256" r="210" fill="#fffaf2" opacity=".16"/>
+  <path d="M256 360c-78-42-144-98-144-171 0-42 32-75 73-75 30 0 55 17 71 44 16-27 41-44 71-44 41 0 73 33 73 75 0 73-66 129-144 171Z" fill="#fffaf2"/>
+</svg>

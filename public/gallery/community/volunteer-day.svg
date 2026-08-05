@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1000" role="img" aria-label="Volunteer day">
+  <rect width="900" height="1000" rx="48" fill="#eef2ff"/>
+  <circle cx="260" cy="330" r="120" fill="#435bbe"/>
+  <circle cx="450" cy="300" r="140" fill="#e45f35"/>
+  <circle cx="650" cy="340" r="115" fill="#187e62"/>
+  <rect x="145" y="560" width="610" height="250" rx="46" fill="#ffffff"/>
+  <path d="M250 700h400" stroke="#ffe1b9" stroke-width="42" stroke-linecap="round"/>
+</svg>

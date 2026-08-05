@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1200" role="img" aria-label="Nutrition camp">
+  <rect width="900" height="1200" rx="48" fill="#f4fbf6"/>
+  <circle cx="450" cy="350" r="210" fill="#b8ecd2"/>
+  <rect x="150" y="640" width="600" height="330" rx="46" fill="#ffffff"/>
+  <path d="M280 810c90 82 250 82 340 0" fill="none" stroke="#187e62" stroke-width="38" stroke-linecap="round"/>
+  <circle cx="355" cy="760" r="30" fill="#e45f35"/>
+  <circle cx="545" cy="760" r="30" fill="#e45f35"/>
+</svg>
