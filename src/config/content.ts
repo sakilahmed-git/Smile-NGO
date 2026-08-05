@@ -105,9 +105,8 @@ export const facebookFallbackPosts = [
 ];
 
 export const donationDetails = {
-  upiId: "smile.ngo@upi",
+  upiId: "smilengo@sbi",
   accountName: "SMILE NGO",
-  accountNumber: "123456789012",
-  ifsc: "SBIN0001234",
+  ifsc: "SBIN0007996",
   bank: "State Bank of India",
 };

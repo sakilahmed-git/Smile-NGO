@@ -17,12 +17,12 @@ export default function DonatePage() {
         <article className="hero-panel">
           <div className="relative aspect-square overflow-hidden rounded-[1.4rem] bg-white">
             <Image
-              src="/qr/donation-qr.svg"
+              src="/upi-qr.jpg"
               alt="UPI donation QR code"
               fill
               className="object-contain p-6"
               priority
-              sizes="(min-width: 768px) 38vw, 92vw"
+              sizes="(min-width: 968px) 48vw, 102vw"
             />
           </div>
         </article>
@@ -32,7 +32,6 @@ export default function DonatePage() {
             {[
               ["UPI ID", donationDetails.upiId],
               ["Account name", donationDetails.accountName],
-              ["Account number", donationDetails.accountNumber],
               ["IFSC", donationDetails.ifsc],
               ["Bank", donationDetails.bank],
             ].map(([label, value]) => (

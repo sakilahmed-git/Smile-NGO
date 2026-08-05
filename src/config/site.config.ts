@@ -4,8 +4,8 @@ export const siteConfig = {
     "A transparent, community-led NGO platform supporting education, health, nutrition and dignity programs for children and families.",
   url: "https://smilengo.org",
   phone: "+91 7002372041/+91 7002683620",
-  email: "hello@smilengo.org",
-  address: "SMILE Community Centre, Patna, Bihar, India",
+  email: "smilengo2025@gmail.com",
+  address: "Burichatam No.1, Gossaigaon, Kokrajhar, Assam, 783361",
   whatsapp: "917002372041",
   social: {
     facebookPageUrl:
