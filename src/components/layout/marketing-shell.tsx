@@ -1,16 +1,48 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import Link from "next/link";
-import { HeartHandshake, Home, Images, Landmark, Menu, MessageCircle } from "lucide-react";
+import { HeartHandshake, Home, Images, Landmark, Menu, MessageCircle, Users } from "lucide-react";
 import { siteConfig } from "@/config/site.config";
 import { projects } from "@/config/content";
+import { usePwa } from "@/providers";
 
 const nav = [
   { href: "/", label: "Home", icon: Home },
   { href: "/projects", label: "Projects", icon: HeartHandshake },
   { href: "/gallery", label: "Gallery", icon: Images },
-  { href: "/transparency", label: "Trust", icon: Landmark },
+  { href: "/volunteers", label: "Volunteer", icon: Users },
+  { href: "/contact", label: "Contact", icon: MessageCircle },
 ];
 
 export function MarketingShell({ children }: { children: React.ReactNode }) {
+  const { canInstall, isStandalone, install, dismissInstallPrompt } = usePwa();
+  const [installVisible, setInstallVisible] = useState(false);
+
+  useEffect(() => {
+    if (!canInstall || isStandalone) {
+      setInstallVisible(false);
+      return;
+    }
+
+    const wasDismissed = window.localStorage.getItem("smile-pwa-dismissed");
+    if (!wasDismissed) {
+      setInstallVisible(true);
+    }
+  }, [canInstall, isStandalone]);
+
+  const handleInstall = async () => {
+    await install();
+    setInstallVisible(false);
+    window.localStorage.setItem("smile-pwa-dismissed", "1");
+  };
+
+  const handleCancel = () => {
+    dismissInstallPrompt();
+    setInstallVisible(false);
+    window.localStorage.setItem("smile-pwa-dismissed", "1");
+  };
+
   return (
     <div className="min-h-screen bg-[var(--color-surface)] text-[var(--color-ink)]">
       <a className="skip-link" href="#main-content">
@@ -24,13 +56,19 @@ export function MarketingShell({ children }: { children: React.ReactNode }) {
             </span>
             <span>{siteConfig.name}</span>
           </Link>
-          <div className="hidden items-center gap-1 md:flex">
+          <div className="hidden items-center gap-2 md:flex">
             {nav.map((item) => (
               <Link key={item.href} href={item.href} className="nav-link">
                 {item.label}
               </Link>
             ))}
-            <Link href="/donate" className="btn-primary ml-2">
+            <Link href="/login" className="nav-link">
+              Login
+            </Link>
+            <Link href="/register" className="btn-secondary">
+              Register
+            </Link>
+            <Link href="/donate" className="btn-primary">
               Donate
             </Link>
           </div>
@@ -83,6 +121,43 @@ export function MarketingShell({ children }: { children: React.ReactNode }) {
           );
         })}
       </nav>
+
+      {installVisible ? (
+        <div className="fixed inset-0 z-50 grid place-items-center bg-black/40 p-4">
+          <div className="w-full max-w-md rounded-[var(--radius-lg)] bg-white p-6 shadow-soft">
+            <div className="flex items-start justify-between gap-4">
+              <div>
+                <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[var(--color-brand-strong)]">
+                  Install app
+                </p>
+                <h2 className="mt-3 text-2xl font-semibold">Add SMILE NGO to your home screen</h2>
+                <p className="mt-3 text-sm leading-6 text-[var(--color-muted)]">
+                  Get faster access, offline support, and a cleaner mobile experience when you install the site.
+                </p>
+              </div>
+              <button
+                type="button"
+                onClick={handleCancel}
+                className="rounded-full border border-black/10 bg-white px-3 py-2 text-sm font-semibold text-[var(--color-ink)] transition hover:bg-black/5"
+              >
+                Cancel
+              </button>
+            </div>
+            <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+              <button type="button" onClick={handleInstall} className="btn-primary w-full sm:w-auto">
+                Install SMILE NGO
+              </button>
+              <button
+                type="button"
+                onClick={handleCancel}
+                className="btn-secondary w-full sm:w-auto"
+              >
+                Not now
+              </button>
+            </div>
+          </div>
+        </div>
+      ) : null}
     </div>
   );
 }

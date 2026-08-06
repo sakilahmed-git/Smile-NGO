@@ -15,12 +15,14 @@ type PwaContextValue = {
   canInstall: boolean;
   isStandalone: boolean;
   install: () => Promise<void>;
+  dismissInstallPrompt: () => void;
 };
 
 const PwaContext = createContext<PwaContextValue>({
   canInstall: false,
   isStandalone: false,
   install: async () => {},
+  dismissInstallPrompt: () => {},
 });
 
 export function PwaProvider({ children }: { children: React.ReactNode }) {
@@ -54,6 +56,7 @@ export function PwaProvider({ children }: { children: React.ReactNode }) {
         await promptEvent.userChoice.catch(() => undefined);
         setPromptEvent(null);
       },
+      dismissInstallPrompt: () => setPromptEvent(null),
     }),
     [isStandalone, promptEvent],
   );

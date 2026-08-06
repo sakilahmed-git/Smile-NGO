@@ -4,6 +4,7 @@ import { AuthProvider } from "./auth-provider";
 import { SettingsProvider } from "./settings-provider";
 import { MotionProvider } from "./motion-provider";
 import { PwaProvider } from "./pwa-provider";
+import { usePwa } from "./pwa-provider";
 
 export function Providers({ children }: { children: React.ReactNode }) {
   return (
@@ -16,3 +17,5 @@ export function Providers({ children }: { children: React.ReactNode }) {
     </AuthProvider>
   );
 }
+
+export { usePwa };

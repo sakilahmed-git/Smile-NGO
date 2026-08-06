@@ -1,5 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
+import Marquee from "react-fast-marquee";
+import { Zap } from "lucide-react";
 import { ArrowRight, BadgeCheck, HeartHandshake, Landmark, ShieldCheck } from "lucide-react";
 import { donationDetails, impactStats, projects, reports, team } from "@/config/content";
 import { FacebookUpdates } from "@/components/sections/facebook-updates";
@@ -7,7 +9,46 @@ import { FacebookUpdates } from "@/components/sections/facebook-updates";
 export default function HomePage() {
   return (
     <main>
+
+      <section className="announcement-bar">
+  <div
+  style={{
+    background: "#12214d",
+    color: "#fff",
+    height: 48,
+    display: "flex",
+    alignItems: "center",
+  }}
+>
+  <div
+  style={{
+    background: "#f4a51c",
+    color: "#111",
+    padding: "0 20px",
+    height: "100%",
+    display: "flex",
+    alignItems: "center",
+    gap: "8px",
+    fontWeight: 700,
+    flexShrink: 0,
+    fontSize: "14px",
+  }}
+>
+  <Zap size={16} strokeWidth={2.5} />
+  <span>LATEST</span>
+</div>
+
+  <Marquee speed={50} pauseOnHover gradient={false}>
+    ► Our community programmes are underway &nbsp;&nbsp;&nbsp;
+    ► Welcome to our new website &nbsp;&nbsp;&nbsp;
+    ► Assam Flood Relief Campaign is now accepting donations
+    &nbsp;&nbsp;&nbsp;
+    ► Volunteer registrations are open
+  </Marquee>
+</div>
+</section>
       <section className="page-shell grid gap-8 pb-4 md:grid-cols-[1.05fr_.95fr] md:items-center md:pt-16">
+        
         <div>
           <p className="eyebrow">Verified impact. Human stories.</p>
           <h1 className="hero-title">A warmer way to fund education, health and dignity.</h1>
