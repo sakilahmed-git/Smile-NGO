@@ -1,6 +1,5 @@
 import { siteConfig } from "@/config/site.config";
-import { facebookFallbackPosts } from "@/config/content";
-
+import { Facebook } from "lucide-react";
 type FacebookPost = {
   id: string;
   message?: string;
@@ -59,25 +58,25 @@ export async function FacebookUpdates() {
 
   return (
     <section className="page-shell">
-      <div className="grid gap-5 md:grid-cols-[1fr_1fr]">
-        <div className="grid gap-5">
-          {facebookFallbackPosts.map((post) => (
-            <article className="soft-card" key={post.title}>
-              <p className="text-xs font-semibold text-[var(--color-muted)]">{post.date}</p>
-              <h2 className="mt-2 text-lg font-semibold">{post.title}</h2>
-              <p className="mt-2 text-sm leading-6 text-[var(--color-muted)]">{post.body}</p>
-            </article>
-          ))}
-        </div>
+  <div
+    className="
+      relative
+      mx-auto
+      max-w-2xl
+      overflow-hidden"
+  >
+    {/* Feed */}
+    <div>
+      <div className="overflow-hidden rounded-xl ml-[-5px]">
         <iframe
           title="SMILE NGO Facebook page"
-          className="min-h-[500px] w-full rounded-[var(--radius-lg)] border border-black/5 bg-white shadow-soft"
+          className="h-[2200px] w-full border-0  sm:h-[520px] md:h-[600px] lg:h-[700px]"
           loading="lazy"
           src={`https://www.facebook.com/plugins/page.php?${new URLSearchParams({
             href: siteConfig.social.facebookPageUrl,
             tabs: "timeline",
-            width: "500",
-            height: "500",
+            height: "2200",
+            width: "380",
             small_header: "false",
             adapt_container_width: "true",
             hide_cover: "false",
@@ -85,6 +84,8 @@ export async function FacebookUpdates() {
           })}`}
         />
       </div>
-    </section>
+    </div>
+  </div>
+</section>
   );
 }

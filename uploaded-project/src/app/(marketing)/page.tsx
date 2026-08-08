@@ -86,7 +86,7 @@ export default function HomePage() {
             SMILE NGO connects donors, volunteers and field teams through transparent programs,
             verified donation records and mobile-first community reporting.
           </p>
-          <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+          <div className="mt-6 flex flex-col gap-3 md:flex-row">
             <Link href="/donate" className="btn-primary">
               Donate by UPI
             </Link>
@@ -326,7 +326,7 @@ export default function HomePage() {
           <p className="mx-auto mt-3 max-w-xl text-sm leading-6 text-white/90">
             Join us in our mission to create positive change. Every contribution matters.
           </p>
-          <div className="mt-6 flex flex-col justify-center gap-3 sm:flex-row">
+          <div className="mt-6 flex flex-col justify-center gap-3 md:flex-row">
             <Link href="/donate" className="btn-primary bg-white !text-[var(--color-brand-strong)] hover:bg-white/90">
               Donate Now
             </Link>
@@ -348,7 +348,7 @@ export default function HomePage() {
             <p><strong className="text-[var(--color-ink)]">Verification:</strong> upload screenshot, admin approves or rejects.</p>
           </div>
         </article>
-        <div className="grid gap-4 sm:grid-cols-3">
+        <div className="grid gap-4 md:grid-cols-3">
           {[
             { icon: HeartHandshake, title: "Program-led", body: "Every appeal links to active community work." },
             { icon: Landmark, title: "Auditable", body: "Reports, ledgers and policies remain visible." },
@@ -393,7 +393,7 @@ export default function HomePage() {
           <p className="eyebrow">{membershipInfo.eyebrow}</p>
           <h2 className="mt-2 text-3xl font-semibold">{membershipInfo.title}</h2>
           <p className="mt-3 text-sm leading-7 text-[var(--color-muted)]">{membershipInfo.body}</p>
-          <ul className="mt-4 grid gap-2 sm:grid-cols-2">
+          <ul className="mt-4 grid gap-2 md:grid-cols-2">
             {membershipInfo.tiers.map((tier) => (
               <li key={tier} className="flex items-center gap-2 text-sm font-medium">
                 <BadgeCheck size={16} className="text-[var(--color-green)]" aria-hidden /> {tier}

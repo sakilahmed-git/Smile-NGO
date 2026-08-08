@@ -12,7 +12,7 @@ export default function DonatePage() {
           HERO
       ========================== */}
       <section className="page-shell pb-6">
-        <div className="relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-[#063F30] via-[#087653] to-[#229C73] px-6 py-10 text-center text-white shadow-[0_20px_55px_rgba(6,78,59,0.16)] sm:px-10 md:py-12">
+        <div className="relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-[#063F30] via-[#087653] to-[#229C73] px-6 py-10 text-center text-white shadow-[0_20px_55px_rgba(6,78,59,0.16)] md:px-10 md:py-12">
 
           <div className="pointer-events-none absolute -right-20 -top-24 h-64 w-64 rounded-full bg-[#F1D080]/15 blur-3xl" />
           <div className="pointer-events-none absolute -bottom-24 -left-20 h-64 w-64 rounded-full bg-white/10 blur-3xl" />
@@ -26,20 +26,19 @@ export default function DonatePage() {
               Support SMILE NGO
             </p>
 
-            <h1 className="mt-3 text-3xl font-bold leading-tight tracking-tight sm:text-4xl md:text-5xl">
+            <h1 className="mt-3 text-3xl font-bold leading-tight tracking-tight md:text-4xl md:text-5xl">
               Your support can create
               <span className="block text-[#F1D080]">
                 meaningful change.
               </span>
             </h1>
 
-            <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-white/80 sm:text-base">
+            <p className="mx-auto mt-2 max-w-2xl text-sm leading-9 text-white/80 md:text-base">
               Every contribution helps us support communities across Assam
-              through education, health, relief, environment and community
-              development initiatives.
+              through multiple initiatives.
             </p>
 
-            <div className="mt-6 flex flex-wrap justify-center gap-x-6 gap-y-2 text-xs font-medium text-white/70">
+            <div className="mt-6 flex flex-wrap justify-center gap-x-3 gap-y-3 text-xs font-medium text-white/70">
               <span>✓ Community-led</span>
               <span>✓ Assam-based</span>
               <span>✓ Transparent giving</span>
@@ -122,7 +121,7 @@ export default function DonatePage() {
 
 
           {/* BANK DETAILS */}
-          <article className="rounded-[2rem] border border-emerald-900/5 bg-white p-5 shadow-[0_12px_35px_rgba(6,78,59,0.07)] sm:p-6">
+          <article className="rounded-[2rem] border border-emerald-900/5 bg-white p-5 shadow-[0_12px_35px_rgba(6,78,59,0.07)] md:p-6">
 
             <div>
               <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#0B8A68]">
@@ -198,7 +197,7 @@ export default function DonatePage() {
       ========================== */}
       <section className="page-shell pt-2">
 
-        <div className="rounded-[2rem] border border-emerald-900/5 bg-[#F7FAF8] p-5 sm:p-7">
+        <div className="rounded-[2rem] border border-emerald-900/5 bg-[#F7FAF8] p-5 md:p-7">
 
           <div className="text-center">
             <p className="eyebrow">Where your support goes</p>
@@ -269,7 +268,7 @@ export default function DonatePage() {
 
 
           {/* FORM */}
-          <form className="rounded-[2rem] border border-emerald-900/5 bg-white p-5 shadow-[0_12px_35px_rgba(6,78,59,0.07)] sm:p-6">
+          <form className="rounded-[2rem] border border-emerald-900/5 bg-white p-5 shadow-[0_12px_35px_rgba(6,78,59,0.07)] md:p-6">
 
             <div>
               <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#0B8A68]">
@@ -340,7 +339,7 @@ export default function DonatePage() {
           FINAL TRUST NOTE
       ========================== */}
       <section className="page-shell pt-0">
-        <div className="flex flex-col items-center justify-center gap-2 rounded-2xl border border-emerald-900/5 bg-white px-5 py-4 text-center sm:flex-row">
+        <div className="flex flex-col items-center justify-center gap-2 rounded-2xl border border-emerald-900/5 bg-white px-5 py-4 text-center md:flex-row">
           <CheckCircle2
             size={17}
             className="text-[#087653]"

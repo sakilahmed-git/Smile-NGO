@@ -125,8 +125,8 @@ export function SectionPage({
             py-6
             text-white
             shadow-[0_20px_60px_rgba(6,78,59,0.18)]
-            sm:px-8
-            sm:py-11
+            md:px-8
+            md:py-11
             md:px-12
             md:py-14
           "
@@ -178,7 +178,7 @@ export function SectionPage({
                 font-bold
                 leading-[1.08]
                 tracking-[-0.025em]
-                sm:text-4xl
+                md:text-4xl
                 md:text-5xl
               "
             >
@@ -192,14 +192,14 @@ export function SectionPage({
                 text-sm
                 leading-7
                 text-white/85
-                sm:text-base
-                sm:leading-8
+                md:text-base
+                md:leading-8
               "
             >
               {copy.body}
             </p>
 
-            <div className="mt-7 flex flex-col gap-3 sm:flex-row">
+            <div className="mt-7 flex flex-col gap-3 md:flex-row">
               <Link
                 href={copy.ctaHref}
                 className="
@@ -262,6 +262,42 @@ export function SectionPage({
       </section>
 
       {/* =========================================================
+          TEAM MEMBERS (right after hero, full list, team page only)
+      ========================================================= */}
+      {id === "team" && team.length > 0 && (
+        <section className="page-shell mt-0 md:mt-14">
+
+          <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-3">
+            {team.map((member) => (
+              <article
+                key={member.name}
+                className="
+                  rounded-[1.5rem]
+                  bg-white
+                  p-5
+                  shadow-[0_10px_30px_rgba(6,78,59,0.06)]
+                "
+              >
+                <div className="grid h-14 w-14 place-items-center rounded-full bg-[#E8F7F1] text-lg font-bold text-[#087A59]">
+                  {member.name.charAt(0)}
+                </div>
+
+                <h3 className="mt-4 font-bold text-[#0B211A]">
+                  {member.name}
+                </h3>
+
+                {"role" in member && member.role ? (
+                  <p className="mt-1 text-xs text-[#087A59]">
+                    {member.role}
+                  </p>
+                ) : null}
+              </article>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {/* =========================================================
           TRUST STRIP
       ========================================================= */}
       
@@ -275,7 +311,7 @@ export function SectionPage({
             At a glance
           </p>
 
-          <h2 className="mt-2 text-2xl font-bold tracking-tight text-[#0B211A] sm:text-3xl">
+          <h2 className="mt-2 text-2xl font-bold tracking-tight text-[#0B211A] md:text-3xl">
             The work in numbers.
           </h2>
 
@@ -285,21 +321,21 @@ export function SectionPage({
           </p>
         </div>
 
-        <div className="grid overflow-hidden rounded-[1.75rem] bg-white shadow-[0_12px_40px_rgba(6,78,59,0.07)] sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid overflow-hidden rounded-[1.75rem] bg-white shadow-[0_12px_40px_rgba(6,78,59,0.07)] md:grid-cols-2 lg:grid-cols-4">
           {impactStats.slice(0, 4).map((stat, index) => (
             <article
               key={stat.label}
               className={`
                 p-5
-                sm:p-6
-                ${index % 2 !== 0 ? "sm:border-l" : ""}
+                md:p-6
+                ${index % 2 !== 0 ? "md:border-l" : ""}
                 ${index > 1 ? "border-t" : ""}
                 lg:border-t-0
                 ${index > 0 ? "lg:border-l" : ""}
                 border-black/5
               `}
             >
-              <strong className="block text-2xl font-bold tracking-tight text-[#087A59] sm:text-3xl">
+              <strong className="block text-2xl font-bold tracking-tight text-[#087A59] md:text-3xl">
                 {stat.value}
               </strong>
 
@@ -316,12 +352,12 @@ export function SectionPage({
       ========================================================= */}
       <section className="page-shell mt-10 md:mt-14">
         <div className="grid gap-5 md:grid-cols-[.9fr_1.1fr] md:items-stretch">
-          <div className="rounded-[1.75rem] bg-[#EAF6F1] p-7 sm:p-8">
+          <div className="rounded-[1.75rem] bg-[#EAF6F1] p-7 md:p-8">
             <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#087A59]">
               Why SMILE exists
             </p>
 
-            <h2 className="mt-3 text-2xl font-bold leading-tight tracking-tight text-[#0B211A] sm:text-3xl">
+            <h2 className="mt-3 text-2xl font-bold leading-tight tracking-tight text-[#0B211A] md:text-3xl">
               Support that reaches people where it matters.
             </h2>
 
@@ -332,7 +368,7 @@ export function SectionPage({
             </p>
           </div>
 
-          <div className="grid gap-3 sm:grid-cols-2">
+          <div className="grid gap-3 md:grid-cols-2">
             <article className="rounded-[1.5rem] bg-white p-6 shadow-[0_10px_30px_rgba(6,78,59,0.06)]">
               <div className="grid h-10 w-10 place-items-center rounded-full bg-[#E8F7F1] text-[#087A59]">
                 <HeartHandshake size={19} />
@@ -363,7 +399,7 @@ export function SectionPage({
               </p>
             </article>
 
-            <article className="rounded-[1.5rem] bg-white p-6 shadow-[0_10px_30px_rgba(6,78,59,0.06)] sm:col-span-2">
+            <article className="rounded-[1.5rem] bg-white p-6 shadow-[0_10px_30px_rgba(6,78,59,0.06)] md:col-span-2">
               <div className="flex items-start gap-4">
                 <div className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-[#E8F7F1] text-[#087A59]">
                   <BadgeCheck size={19} />
@@ -397,14 +433,14 @@ export function SectionPage({
                 Our work
               </p>
 
-              <h2 className="mt-2 text-2xl font-bold tracking-tight text-[#0B211A] sm:text-3xl">
+              <h2 className="mt-2 text-2xl font-bold tracking-tight text-[#0B211A] md:text-3xl">
                 Where your support goes.
               </h2>
             </div>
 
             <Link
               href="/projects"
-              className="hidden items-center text-sm font-bold text-[#087A59] sm:flex"
+              className="hidden items-center text-sm font-bold text-[#087A59] md:flex"
             >
               View all
               <ArrowRight size={16} className="ml-1" />
@@ -482,7 +518,7 @@ export function SectionPage({
               text-sm
               font-bold
               text-[#087A59]
-              sm:hidden
+              md:hidden
             "
           >
             View all projects
@@ -496,7 +532,7 @@ export function SectionPage({
       ========================================================= */}
       {id === "gallery" && galleryItems.length > 0 && (
         <section className="page-shell mt-12">
-          <div className="rounded-[1.75rem] bg-[#F3F8F5] p-6 sm:p-8">
+          <div className="rounded-[1.75rem] bg-[#F3F8F5] p-6 md:p-8">
             <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#087A59]">
               Recent moments
             </p>
@@ -533,48 +569,6 @@ export function SectionPage({
         </section>
       )}
 
-      {id === "team" && team.length > 0 && (
-        <section className="page-shell mt-12">
-          <div className="mb-6 text-center">
-            <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#087A59]">
-              Our people
-            </p>
-
-            <h2 className="mt-2 text-2xl font-bold text-[#0B211A] sm:text-3xl">
-              The people behind SMILE.
-            </h2>
-          </div>
-
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {team.slice(0, 6).map((member) => (
-              <article
-                key={member.name}
-                className="
-                  rounded-[1.5rem]
-                  bg-white
-                  p-5
-                  shadow-[0_10px_30px_rgba(6,78,59,0.06)]
-                "
-              >
-                <div className="grid h-14 w-14 place-items-center rounded-full bg-[#E8F7F1] text-lg font-bold text-[#087A59]">
-                  {member.name.charAt(0)}
-                </div>
-
-                <h3 className="mt-4 font-bold text-[#0B211A]">
-                  {member.name}
-                </h3>
-
-                {"role" in member && member.role ? (
-                  <p className="mt-1 text-xs text-[#087A59]">
-                    {member.role}
-                  </p>
-                ) : null}
-              </article>
-            ))}
-          </div>
-        </section>
-      )}
-
       {id === "reports" && reports.length > 0 && (
         <section className="page-shell mt-12">
           <div className="mb-6">
@@ -582,7 +576,7 @@ export function SectionPage({
               Documents
             </p>
 
-            <h2 className="mt-2 text-2xl font-bold text-[#0B211A] sm:text-3xl">
+            <h2 className="mt-2 text-2xl font-bold text-[#0B211A] md:text-3xl">
               Reports & resources.
             </h2>
           </div>
@@ -640,8 +634,8 @@ export function SectionPage({
             text-center
             text-white
             shadow-[0_20px_55px_rgba(6,78,59,0.18)]
-            sm:px-10
-            sm:py-11
+            md:px-10
+            md:py-11
           "
         >
           <div
@@ -668,7 +662,7 @@ export function SectionPage({
               Be part of the change
             </p>
 
-            <h2 className="mt-2 text-2xl font-bold tracking-tight sm:text-3xl">
+            <h2 className="mt-2 text-2xl font-bold tracking-tight md:text-3xl">
               Good work becomes stronger when more people take part.
             </h2>
 
@@ -677,7 +671,7 @@ export function SectionPage({
               discover the work SMILE is doing across Assam.
             </p>
 
-            <div className="mt-6 flex flex-col justify-center gap-3 sm:flex-row">
+            <div className="mt-6 flex flex-col justify-center gap-3 md:flex-row">
               <Link
                 href="/donate"
                 className="

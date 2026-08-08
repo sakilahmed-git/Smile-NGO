@@ -56,7 +56,7 @@ export function AssistanceRequestForm() {
             {errors.name ? <p className="text-xs text-[var(--color-brand-strong)]">{errors.name.message}</p> : null}
           </div>
 
-          <div className="grid gap-4 sm:grid-cols-2">
+          <div className="grid gap-4 md:grid-cols-2">
             <div className="form-field">
               <label htmlFor="phone">Phone</label>
               <input id="phone" placeholder="+91 ..." {...register("phone")} />

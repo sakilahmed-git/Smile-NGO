@@ -140,7 +140,7 @@ export function HeroCarousel({
 
   return (
     <div
-      className="group relative aspect-[16/10] w-full touch-pan-y select-none overflow-hidden rounded-[1.7rem] bg-black shadow-[0_22px_60px_rgba(4,63,49,0.14)]"
+      className="group relative aspect-[16/10] md:aspect-auto md:h-full w-full touch-pan-y select-none overflow-hidden rounded-[1.7rem] bg-black shadow-[0_22px_60px_rgba(4,63,49,0.14)]"
       onPointerDown={handlePointerDown}
       onPointerMove={handlePointerMove}
       onPointerUp={handlePointerUp}

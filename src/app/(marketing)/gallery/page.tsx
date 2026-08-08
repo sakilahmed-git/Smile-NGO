@@ -215,7 +215,7 @@ export default async function GalleryPage({
 
 
             {/* Buttons */}
-            <div className="flex w-full flex-col gap-3 sm:flex-row md:w-auto">
+            <div className="flex w-full flex-col gap-3 md:flex-row md:w-auto">
 
               <Link
                 href="/donate"

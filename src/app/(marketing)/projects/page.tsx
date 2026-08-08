@@ -317,7 +317,7 @@ export default function ProjectsPage() {
       </div>
 
       {/* Actions */}
-      <div className="relative flex w-full flex-col gap-3 sm:w-auto sm:flex-row md:flex-col lg:flex-row">
+      <div className="relative flex w-full flex-col gap-3 md:w-auto md:flex-row md:flex-col lg:flex-row">
 
         <Link
           href="/donate"

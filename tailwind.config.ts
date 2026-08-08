@@ -4,8 +4,6 @@ const config: Config = {
   content: ["./src/**/*.{ts,tsx}"],
   theme: {
     screens: {
-      xs: "390px",
-      sm: "430px",
       md: "768px",
       lg: "1024px",
       xl: "1440px",

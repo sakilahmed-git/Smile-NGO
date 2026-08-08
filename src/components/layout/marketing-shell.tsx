@@ -1,16 +1,30 @@
 "use client";
 
-import { useEffect,useRef, useState } from "react";
-import Draggable from "react-draggable";
+import { useEffect, useRef, useState } from "react";
+
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { siWhatsapp } from "simple-icons";
 import Link from "next/link";
-import { HeartHandshake, Home, Images, Landmark, Menu, MessageCircle, Users, Zap } from "lucide-react";
+import {
+  ArrowUpRight,
+  ChevronRight,
+  Calendar,
+  HeartHandshake,
+  Home,
+  Images,
+  Menu,
+  MessageCircle,
+  Newspaper,
+  Users,
+  X,
+  Zap,
+} from "lucide-react";
 import { siteConfig } from "@/config/site.config";
 import { projects } from "@/config/content";
 import { usePwa } from "@/providers";
 import Marquee from "react-fast-marquee";
+
 const nav = [
   { href: "/", label: "Home", icon: Home },
   { href: "/projects", label: "Projects", icon: HeartHandshake },
@@ -19,11 +33,21 @@ const nav = [
   { href: "/contact", label: "Contact", icon: MessageCircle },
 ];
 
+// Mobile bottom tab bar only — Blog replaces Gallery here, everything else
+// (desktop header nav + drawer) keeps Gallery as-is.
+const mobileNav = [
+  { href: "/", label: "Home", icon: Home },
+  { href: "/projects", label: "Projects", icon: HeartHandshake },
+  { href: "/blog", label: "Blog", icon: Newspaper },
+  { href: "/volunteers", label: "Volunteer", icon: Users },
+  { href: "/contact", label: "Contact", icon: MessageCircle },
+];
+
 export function MarketingShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const { canInstall, isStandalone, install, dismissInstallPrompt } = usePwa();
   const [installVisible, setInstallVisible] = useState(false);
-
+  const [drawerOpen, setDrawerOpen] = useState(false);
 
   useEffect(() => {
     if (!canInstall || isStandalone) {
@@ -37,6 +61,23 @@ export function MarketingShell({ children }: { children: React.ReactNode }) {
     }
   }, [canInstall, isStandalone]);
 
+  // Lock body scroll while the drawer is open
+  useEffect(() => {
+    if (drawerOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [drawerOpen]);
+
+  // Close the drawer automatically on route change
+  useEffect(() => {
+    setDrawerOpen(false);
+  }, [pathname]);
+
   const handleInstall = async () => {
     await install();
     setInstallVisible(false);
@@ -49,6 +90,9 @@ export function MarketingShell({ children }: { children: React.ReactNode }) {
     window.localStorage.setItem("smile-pwa-dismissed", "1");
   };
 
+  const isActive = (href: string) =>
+    href === "/" ? pathname === "/" : pathname.startsWith(href);
+
   return (
     <div className="min-h-screen bg-[var(--color-surface)] text-[var(--color-ink)]">
       <a className="skip-link" href="#main-content">
@@ -58,24 +102,25 @@ export function MarketingShell({ children }: { children: React.ReactNode }) {
         <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4">
           <Link href="/" className="flex items-center gap-2 font-semibold tracking-tight">
             <span className="relative h-11 w-11 overflow-hidden rounded-2xl ring-1 ring-[rgba(196,151,69,0.20)] shadow-[0_7px_20px_rgba(7,85,62,0.12)]">
-  <Image
-  src="/logos/15bab117-44da-452d-9634-698c45c64771 (1).webp"
-  alt="SMILE NGO"
-  fill
-  className="object-contain"
-  priority
-/>
-</span>
+              <Image
+                src="/logos/15bab117-44da-452d-9634-698c45c64771 (1).webp"
+                alt="SMILE NGO"
+                fill
+                className="object-contain"
+                priority
+              />
+            </span>
             <span className="text-[17px] font-black tracking-[-0.035em]">
-  <span className="bg-gradient-to-tr from-[#063F30] via-[#2FAF79] to-[#0A5B43] bg-clip-text text-transparent">
-    SMILE
-  </span>
-  <span className="mx-1"></span>
-  <span className="bg-gradient-to-tr from-[#805516] via-[#E7C46A] to-[#A87325] bg-clip-text text-transparent">
-    NGO
-  </span>
-</span>
+              <span className="bg-gradient-to-tr from-[#063F30] via-[#2FAF79] to-[#0A5B43] bg-clip-text text-transparent">
+                SMILE
+              </span>
+              <span className="mx-1"></span>
+              <span className="bg-gradient-to-tr from-[#805516] via-[#E7C46A] to-[#A87325] bg-clip-text text-transparent">
+                NGO
+              </span>
+            </span>
           </Link>
+
           <div className="hidden items-center gap-2 md:flex">
             {nav.map((item) => (
               <Link key={item.href} href={item.href} className="nav-link">
@@ -91,68 +136,83 @@ export function MarketingShell({ children }: { children: React.ReactNode }) {
             <Link href="/donate" className="btn-primary">
               Donate
             </Link>
+            <button
+              type="button"
+              onClick={() => setDrawerOpen(true)}
+              aria-label="Open menu"
+              aria-expanded={drawerOpen}
+              className="ml-1 flex h-10 w-10 items-center justify-center rounded-full border border-[rgba(22,128,95,0.15)] bg-white text-[var(--color-ink)] shadow-sm transition hover:bg-[rgba(22,128,95,0.06)]"
+            >
+              <Menu className="h-5 w-5" />
+            </button>
           </div>
-          <Link href="/donate" className="btn-primary md:hidden">
-            Donate
-          </Link>
-          <Menu className="hidden" aria-hidden />
+
+          {/* Mobile: Donate + Menu */}
+          <div className="flex items-center gap-2 md:hidden">
+            <Link href="/donate" className="btn-primary">
+              Donate
+            </Link>
+            <button
+              type="button"
+              onClick={() => setDrawerOpen(true)}
+              aria-label="Open menu"
+              aria-expanded={drawerOpen}
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-[rgba(22,128,95,0.15)] bg-white text-[var(--color-ink)] shadow-sm transition hover:bg-[rgba(22,128,95,0.06)]"
+            >
+              <Menu className="h-5 w-5" />
+            </button>
+          </div>
         </nav>
       </header>
-      <main id="main-content">{/* Global announcement bar */}
-<div className="announcement-bar">
-  <div className="announcement-inner">
-    <div className="announcement-label">
-      <Zap size={15} strokeWidth={2.5} />
-      <span>LATEST</span>
-    </div>
+      <main id="main-content">
+        {/* Global announcement bar */}
+        <div className="announcement-bar">
+          <div className="announcement-inner">
+            <div className="announcement-label">
+              <Zap size={15} strokeWidth={2.5} />
+              <span>LATEST</span>
+            </div>
 
-    <div className="announcement-ticker">
-      <Marquee
-        speed={45}
-        pauseOnHover
-        gradient={false}
-        autoFill
-      >
-        <span className="announcement-item">
-          ► Assam Flood Relief Campaign is now accepting donations
-        </span>
+            <div className="announcement-ticker">
+              <Marquee speed={45} pauseOnHover gradient={false} autoFill>
+                <span className="announcement-item">
+                  ► Assam Flood Relief Campaign is now accepting donations
+                </span>
 
-        <span className="announcement-item">
-          ► Volunteer registrations are open
-        </span>
+                <span className="announcement-item">
+                  ► Volunteer registrations are open
+                </span>
 
-        <span className="announcement-item">
-          ► Our community programmes are underway
-        </span>
+                <span className="announcement-item">
+                  ► Our community programmes are underway
+                </span>
 
-        <span className="announcement-item">
-          ► Welcome to the new SMILE NGO website
-        </span>
-      </Marquee>
-    </div>
-  </div>
-</div>
+                <span className="announcement-item">
+                  ► Welcome to the new SMILE NGO website
+                </span>
+              </Marquee>
+            </div>
+          </div>
+        </div>
 
-{children}</main>
+        {children}
+      </main>
       <div className="fixed inset-0 z-50 pointer-events-none">
-  <a
-  href="https://wa.me/917002372041?text=Hello%20Sir!"
-  target="_blank"
-  rel="noopener noreferrer"
-  aria-label="Chat with SMILE NGO on WhatsApp"
-  className="whatsapp-float whatsapp-drag-handle pointer-events-auto"
->
-  <span
-    dangerouslySetInnerHTML={{
-      __html: siWhatsapp.svg.replace(
-        "<svg ",
-        '<svg fill="white" '
-      ),
-    }}
-    className="h-7 w-7 [&>svg]:h-full [&>svg]:w-full"
-  />
-</a>
-</div>
+        <a
+          href="https://wa.me/917002372041?text=Hello%20Sir!"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Chat with SMILE NGO on WhatsApp"
+          className="whatsapp-float whatsapp-drag-handle pointer-events-auto"
+        >
+          <span
+            dangerouslySetInnerHTML={{
+              __html: siWhatsapp.svg.replace("<svg ", '<svg fill="white" '),
+            }}
+            className="h-7 w-7 [&>svg]:h-full [&>svg]:w-full"
+          />
+        </a>
+      </div>
       <footer className="pb-28 pt-12 md:pb-10">
         <div className="mx-auto grid max-w-6xl gap-8 px-4 md:grid-cols-[1.2fr_.8fr_.8fr]">
           <div>
@@ -178,31 +238,243 @@ export function MarketingShell({ children }: { children: React.ReactNode }) {
         </div>
       </footer>
       <nav className="mobile-tabbar" aria-label="Primary">
-        {nav.map((item) => {
-  const Icon = item.icon;
+        {mobileNav.map((item) => {
+          const Icon = item.icon;
+          const active =
+            item.href === "/"
+              ? pathname === "/"
+              : pathname.startsWith(item.href);
 
-  const isActive =
-    item.href === "/"
-      ? pathname === "/"
-      : pathname.startsWith(item.href);
-
-  return (
-    <Link
-      key={item.href}
-      href={item.href}
-      className={`mobile-tab ${
-        item.href === "/contact" ? "hidden md:flex" : ""
-      } ${isActive ? "mobile-tab-active" : ""}`}
-    >
-      <Icon size={19} aria-hidden />
-      <span>{item.label}</span>
-    </Link>
-  );
-})}
+          return (
+            <Link
+              key={item.href}
+              href={item.href}
+              className={`mobile-tab ${
+                item.href === "/contact" ? "hidden md:flex" : ""
+              } ${active ? "mobile-tab-active" : ""}`}
+            >
+              <Icon size={19} aria-hidden />
+              <span>{item.label}</span>
+            </Link>
+          );
+        })}
       </nav>
 
+      {/* =========================================================
+          DRAWER OVERLAY
+      ========================================================= */}
+      {drawerOpen && (
+        <div
+          className="fixed inset-0 z-[100] bg-black/35 backdrop-blur-[2px]"
+          onClick={() => setDrawerOpen(false)}
+          aria-hidden="true"
+        />
+      )}
+
+      {/* =========================================================
+          RIGHT DRAWER
+      ========================================================= */}
+      <aside
+        className={`fixed right-0 top-0 z-[110] flex h-dvh w-[min(390px,92vw)] flex-col bg-white shadow-[-20px_0_70px_rgba(0,0,0,0.15)] transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+          drawerOpen ? "translate-x-0" : "translate-x-full"
+        }`}
+        aria-hidden={!drawerOpen}
+      >
+        {/* DRAWER HEADER (same logo as your site) */}
+        <div className="flex items-center justify-between border-b border-[rgba(22,128,95,0.08)] px-5 py-4">
+          <Link href="/" onClick={() => setDrawerOpen(false)} className="flex items-center gap-2.5">
+            <span className="relative h-10 w-10 overflow-hidden rounded-2xl ring-1 ring-[rgba(196,151,69,0.20)]">
+              <Image
+                src="/logos/15bab117-44da-452d-9634-698c45c64771 (1).webp"
+                alt="SMILE NGO"
+                fill
+                className="object-contain"
+              />
+            </span>
+            <span className="text-[15px] font-black tracking-[-0.03em]">
+              <span className="bg-gradient-to-tr from-[#063F30] via-[#2FAF79] to-[#0A5B43] bg-clip-text text-transparent">
+                SMILE
+              </span>
+              <span className="mx-1"></span>
+              <span className="bg-gradient-to-tr from-[#805516] via-[#E7C46A] to-[#A87325] bg-clip-text text-transparent">
+                NGO
+              </span>
+            </span>
+          </Link>
+
+          <button
+            type="button"
+            onClick={() => setDrawerOpen(false)}
+            aria-label="Close menu"
+            className="flex h-10 w-10 items-center justify-center rounded-full border border-black/[0.07] bg-black/[0.025] transition hover:bg-black/[0.06]"
+          >
+            <X className="h-5 w-5" />
+          </button>
+        </div>
+
+        {/* DRAWER CONTENT */}
+        <div className="flex-1 overflow-y-auto px-5 py-6">
+          <p className="mb-3 px-1 text-[9px] font-bold uppercase tracking-[0.2em] text-[var(--color-muted)]">
+            Explore
+          </p>
+
+          <nav className="space-y-1">
+            {nav.map((item) => {
+              const Icon = item.icon;
+              const active = isActive(item.href);
+
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  onClick={() => setDrawerOpen(false)}
+                  className={`group flex items-center gap-4 rounded-2xl px-4 py-3.5 transition-all ${
+                    active
+                      ? "bg-[rgba(22,128,95,0.08)] text-[#0A5B43]"
+                      : "text-[var(--color-ink)] hover:bg-black/[0.035]"
+                  }`}
+                >
+                  <span
+                    className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl ${
+                      active
+                        ? "bg-gradient-to-tr from-[#063F30] via-[#2FAF79] to-[#0A5B43] text-white"
+                        : "bg-black/[0.035] text-[var(--color-muted)]"
+                    }`}
+                  >
+                    <Icon className="h-[18px] w-[18px]" />
+                  </span>
+
+                  <span className="flex-1 text-sm font-semibold">{item.label}</span>
+
+                  <ChevronRight
+                    className={`h-4 w-4 transition-transform ${
+                      active ? "text-[#0A5B43]" : "text-black/20 group-hover:translate-x-0.5"
+                    }`}
+                  />
+                </Link>
+              );
+            })}
+          </nav>
+          {/* =====================================================
+              EVENTS  ← new section, placed right after Explore
+          ===================================================== */}
+          <div className="mt-8">
+            <p className="mb-3 px-1 text-[9px] font-bold uppercase tracking-[0.2em] text-[var(--color-muted)]">
+              Events
+            </p>
+
+            <Link
+              href="/events"
+              onClick={() => setDrawerOpen(false)}
+              className="group flex items-center gap-4 rounded-2xl border border-black/[0.07] bg-white px-4 py-4 transition-all hover:bg-black/[0.025]"
+            >
+              <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-[rgba(22,128,95,0.08)] text-[#0A5B43]">
+                <Calendar className="h-5 w-5" />
+              </span>
+              <span className="flex-1">
+                <span className="block text-sm font-bold">Upcoming events</span>
+                <span className="mt-0.5 block text-[10px] text-[var(--color-muted)]">
+                  Community drives, campaigns & meetups
+                </span>
+              </span>
+              <ArrowUpRight className="h-4 w-4 text-black/30" />
+            </Link>
+          </div>
+
+          <div className="mt-8">
+            <p className="mb-3 px-1 text-[9px] font-bold uppercase tracking-[0.2em] text-[var(--color-muted)]">
+              Get involved
+            </p>
+
+            <div className="space-y-2">
+              <Link
+                href="/donate"
+                onClick={() => setDrawerOpen(false)}
+                className="btn-primary flex items-center justify-between gap-4 rounded-2xl px-4 py-4"
+              >
+                <span className="flex items-center gap-3">
+                  <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/15">
+                    <HeartHandshake className="h-5 w-5" />
+                  </span>
+                  <span className="text-left">
+                    <span className="block text-sm font-bold">Donate</span>
+                    <span className="mt-0.5 block text-[10px] opacity-80">
+                      Support our ongoing work
+                    </span>
+                  </span>
+                </span>
+                <ArrowUpRight className="h-5 w-5" />
+              </Link>
+
+              <Link
+                href="/volunteers/apply"
+                onClick={() => setDrawerOpen(false)}
+                className="group flex items-center gap-4 rounded-2xl border border-black/[0.07] bg-white px-4 py-4 transition-all hover:bg-black/[0.025]"
+              >
+                <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-[rgba(22,128,95,0.08)] text-[#0A5B43]">
+                  <Users className="h-5 w-5" />
+                </span>
+                <span className="flex-1">
+                  <span className="block text-sm font-bold">Become a volunteer</span>
+                  <span className="mt-0.5 block text-[10px] text-[var(--color-muted)]">
+                    Join the SMILE community
+                  </span>
+                </span>
+                <ArrowUpRight className="h-4 w-4 text-black/30" />
+              </Link>
+            </div>
+          </div>
+
+          <div className="mt-8 grid grid-cols-2 gap-2">
+            <Link
+              href="/login"
+              onClick={() => setDrawerOpen(false)}
+              className="rounded-xl border border-black/[0.07] px-4 py-3 text-center text-xs font-semibold text-[var(--color-ink)] transition hover:bg-black/[0.03]"
+            >
+              Login
+            </Link>
+            <Link
+              href="/register"
+              onClick={() => setDrawerOpen(false)}
+              className="rounded-xl border border-black/[0.07] px-4 py-3 text-center text-xs font-semibold text-[var(--color-ink)] transition hover:bg-black/[0.03]"
+            >
+              Register
+            </Link>
+          </div>
+
+          <div className="mt-8 rounded-2xl bg-[#F5F7F4] p-5">
+            <div className="flex items-start gap-3">
+              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-white text-[#0A5B43] shadow-sm">
+                <MessageCircle className="h-4 w-4" />
+              </div>
+              <div>
+                <p className="text-xs font-bold">Need help?</p>
+                <p className="mt-1 text-[11px] leading-5 text-[var(--color-muted)]">
+                  Talk to the SMILE NGO team directly.
+                </p>
+                <a
+                  href="https://wa.me/917002372041?text=Hello%20Sir!"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-3 inline-flex items-center gap-1.5 text-[11px] font-bold text-[#0A5B43]"
+                >
+                  WhatsApp us
+                  <ArrowUpRight className="h-3.5 w-3.5" />
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="border-t border-[rgba(22,128,95,0.08)] px-5 py-4">
+          <p className="text-center text-[9px] font-medium tracking-wide text-[var(--color-muted)]">
+            © {new Date().getFullYear()} SMILE NGO
+          </p>
+        </div>
+      </aside>
+
       {installVisible ? (
-        <div className="fixed inset-0 z-50 grid place-items-center bg-black/40 p-4">
+        <div className="fixed inset-0 z-[120] grid place-items-center bg-black/40 p-4">
           <div className="w-full max-w-md rounded-[var(--radius-lg)] bg-white p-6 shadow-soft">
             <div className="flex items-start justify-between gap-4">
               <div>
@@ -222,15 +494,11 @@ export function MarketingShell({ children }: { children: React.ReactNode }) {
                 Cancel
               </button>
             </div>
-            <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-              <button type="button" onClick={handleInstall} className="btn-primary w-full sm:w-auto">
+            <div className="mt-6 flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+              <button type="button" onClick={handleInstall} className="btn-primary w-full md:w-auto">
                 Install SMILE NGO
               </button>
-              <button
-                type="button"
-                onClick={handleCancel}
-                className="btn-secondary w-full sm:w-auto"
-              >
+              <button type="button" onClick={handleCancel} className="btn-secondary w-full md:w-auto">
                 Not now
               </button>
             </div>

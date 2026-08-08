@@ -143,14 +143,14 @@ export function MarketingShell({ children }: { children: React.ReactNode }) {
                 Cancel
               </button>
             </div>
-            <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-              <button type="button" onClick={handleInstall} className="btn-primary w-full sm:w-auto">
+            <div className="mt-6 flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+              <button type="button" onClick={handleInstall} className="btn-primary w-full md:w-auto">
                 Install SMILE NGO
               </button>
               <button
                 type="button"
                 onClick={handleCancel}
-                className="btn-secondary w-full sm:w-auto"
+                className="btn-secondary w-full md:w-auto"
               >
                 Not now
               </button>

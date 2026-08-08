@@ -18,7 +18,7 @@ export const galleryAlbums: LocalGalleryAlbum[] = [
     title: "Community Programs",
     description: "Education, nutrition and volunteer field moments.",
     folderName: "community",
-    location: "Patna, Bihar",
+    location: "Gossaigaon, Kokrajhar",
     date: "2026-08-01",
     published: true,
   },

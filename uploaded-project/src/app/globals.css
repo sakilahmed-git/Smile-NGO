@@ -80,7 +80,7 @@ textarea:focus-visible {
   }
 
   .page-shell {
-    @apply mx-auto max-w-6xl px-4 py-8 sm:px-5 md:py-12;
+    @apply mx-auto max-w-6xl px-4 py-8 md:px-5 md:py-12;
   }
 
   .section-hero {
@@ -89,12 +89,12 @@ textarea:focus-visible {
 
   .section-hero h1,
   .hero-title {
-    @apply mt-3 text-4xl font-semibold leading-[1.04] tracking-normal text-[var(--color-ink)] sm:text-5xl md:text-6xl;
+    @apply mt-3 text-4xl font-semibold leading-[1.04] tracking-normal text-[var(--color-ink)] md:text-5xl md:text-6xl;
   }
 
   .section-hero p:not(.eyebrow),
   .hero-copy {
-    @apply mx-auto mt-4 max-w-2xl text-base leading-7 text-[var(--color-muted)] sm:text-lg;
+    @apply mx-auto mt-4 max-w-2xl text-base leading-7 text-[var(--color-muted)] md:text-lg;
   }
 
   .eyebrow {
@@ -106,7 +106,7 @@ textarea:focus-visible {
   }
 
   .content-grid {
-    @apply grid gap-4 sm:grid-cols-2 lg:grid-cols-4;
+    @apply grid gap-4 md:grid-cols-2 lg:grid-cols-4;
   }
 
   .feature-grid {
@@ -173,15 +173,15 @@ textarea:focus-visible {
 
 @layer components {
   .stat-strip {
-    @apply grid grid-cols-4 gap-2 rounded-[var(--radius-lg)] bg-[var(--color-ink)] px-3 py-5 text-center text-white shadow-soft sm:gap-4 sm:px-6;
+    @apply grid grid-cols-4 gap-2 rounded-[var(--radius-lg)] bg-[var(--color-ink)] px-3 py-5 text-center text-white shadow-soft md:gap-4 md:px-6;
   }
 
   .stat-strip strong {
-    @apply block text-xl font-semibold sm:text-3xl;
+    @apply block text-xl font-semibold md:text-3xl;
   }
 
   .stat-strip span {
-    @apply mt-1 block text-[10px] uppercase tracking-wide text-white/70 sm:text-xs;
+    @apply mt-1 block text-[10px] uppercase tracking-wide text-white/70 md:text-xs;
   }
 
   .status-pill {
@@ -200,11 +200,11 @@ textarea:focus-visible {
   }
 
   .date-badge {
-    @apply grid aspect-square w-16 shrink-0 place-items-center rounded-2xl bg-gradient-to-br from-[var(--color-brand)] to-[var(--color-brand-strong)] text-center text-white shadow-soft sm:w-20;
+    @apply grid aspect-square w-16 shrink-0 place-items-center rounded-2xl bg-gradient-to-br from-[var(--color-brand)] to-[var(--color-brand-strong)] text-center text-white shadow-soft md:w-20;
   }
 
   .date-badge strong {
-    @apply block text-xl font-bold leading-none sm:text-2xl;
+    @apply block text-xl font-bold leading-none md:text-2xl;
   }
 
   .date-badge span {

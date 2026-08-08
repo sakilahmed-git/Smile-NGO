@@ -45,7 +45,7 @@ export default function HomePage() {
     : [];
 
   return (
-    <main className="mx-auto w-full max-w-[1440px] px-1 sm:px-6 lg:px-10 xl:px-14">
+    <main className="mx-auto w-full max-w-[1440px] px-1 md:px-6 lg:px-10 xl:px-14">
 
       {/* Hero: carousel first so it sits at the top on mobile too */}
       <section className="page-shell grid gap-0 pb-0 md:grid-cols-[1.05fr_.95fr] md:items-center md:gap-8 md:pt-8 lg:gap-12">
@@ -115,17 +115,17 @@ export default function HomePage() {
               </h1>
 
               {/* Supporting copy */}
-              <p className="mt-6 max-w-[510px] text-[15px] leading-[1.8] text-[var(--color-muted)] sm:text-base">
+              <p className="mt-6 max-w-[510px] text-[15px] leading-[1.8] text-[var(--color-muted)] md:text-base">
                 From urgent relief to education and community support, SMILE NGO
                 works alongside people facing difficult times — with practical help
                 that reaches where it matters most.
               </p>
 
               {/* Actions */}
-              <div className="mt-7 flex flex-col gap-4 sm:flex-row sm:items-center">
+              <div className="mt-7 flex flex-col gap-4 md:flex-row md:items-center">
                 <Link
                   href="/donate"
-                  className="premium-shine group inline-flex h-12 w-full items-center justify-center gap-2.5 rounded-full bg-[var(--color-brand-strong)] px-7 text-sm font-bold text-white shadow-[0_12px_30px_rgba(4,63,49,0.18)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[var(--color-brand-deep)] hover:shadow-[0_16px_36px_rgba(4,63,49,0.24)] sm:w-auto"
+                  className="premium-shine group inline-flex h-12 w-full items-center justify-center gap-2.5 rounded-full px-7 text-sm font-bold text-white transition-all duration-300 md:w-auto"
                 >
                   <span>Support the Flood Relief</span>
 
@@ -138,7 +138,7 @@ export default function HomePage() {
 
                 <Link
                   href="/projects"
-                  className="group inline-flex h-12 w-full items-center justify-center gap-2 rounded-full px-4 text-sm font-semibold text-[var(--color-brand-strong)] transition-all duration-300 hover:text-[var(--color-gold-dark)] sm:w-auto"
+                  className="group inline-flex h-12 w-full items-center justify-center gap-2 rounded-full px-4 text-sm font-semibold text-[var(--color-brand-strong)] transition-all duration-300 hover:text-[var(--color-gold-dark)] md:w-auto"
                 >
                   <span>Explore our work</span>
 
@@ -184,15 +184,15 @@ export default function HomePage() {
 
       {/* Live counters */}
       <section className="page-shell pt-6 md:pt-8">
-        <div className="grid grid-cols-2 overflow-hidden rounded-[var(--radius-lg)] border border-black/5 bg-white shadow-soft sm:grid-cols-4">
+        <div className="grid grid-cols-2 overflow-hidden rounded-[var(--radius-lg)] border border-black/5 bg-white shadow-soft md:grid-cols-4">
           {siteStats.map((stat, index) => (
             <div
               key={stat.label}
-              className={`min-w-0 px-4 py-5 text-center sm:px-5 ${
+              className={`min-w-0 px-4 py-5 text-center md:px-5 ${
                 index !== 0 ? "border-l border-black/5" : ""
               }`}
             >
-              <strong className="block text-2xl font-bold text-[var(--color-green)] sm:text-3xl">
+              <strong className="block text-2xl font-bold text-[var(--color-green)] md:text-3xl">
                 {stat.value}
               </strong>
               <span className="mt-1 block text-[11px] font-semibold uppercase tracking-wider text-[var(--color-muted)]">
@@ -202,6 +202,7 @@ export default function HomePage() {
           ))}
         </div>
       </section>
+
 
       {/* If you need assistance / If you wish to contribute */}
       <section className="page-shell grid gap-5 md:grid-cols-2">
@@ -325,7 +326,7 @@ export default function HomePage() {
               </p>
 
               {/* small trust points */}
-              <div className="mt-5 grid grid-cols-1 gap-2 xs:grid-cols-2 sm:grid-cols-2">
+              <div className="mt-5 grid grid-cols-1 gap-2 grid-cols-2 md:grid-cols-2">
                 {[
                   "Community-led",
                   "Assam-based",
@@ -381,9 +382,15 @@ export default function HomePage() {
 
               {/* Founder */}
               <div className="mt-6 flex min-w-0 items-center gap-4">
-                <div className="avatar-circle h-16 w-16 shrink-0 border-2 border-white/30 bg-white/15 text-xl text-white">
-                  {founderMessage.name.charAt(0)}
-                </div>
+                <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-full border-2 border-white/30 bg-white/15">
+  <Image
+    src="/images/627476826_2813816025664616_8282728177343720563_n.jpg"
+    alt={founderMessage.name}
+    fill
+    className="object-cover"
+    sizes="64px"
+  />
+</div>
 
                 <div className="min-w-0">
                   <p className="truncate text-lg font-semibold leading-tight">
@@ -421,7 +428,7 @@ export default function HomePage() {
       <section className="page-shell">
         <p className="eyebrow text-center">What we do</p>
         <h2 className="mt-2 text-center text-3xl font-semibold">Our Objectives</h2>
-        <div className="content-grid mt-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="content-grid mt-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
           {objectives.map((item) => (
             <article className="soft-card min-w-0" key={item.title}>
               <h3 className="font-semibold">{item.title}</h3>
@@ -442,7 +449,7 @@ export default function HomePage() {
             All projects <ArrowRight size={16} aria-hidden />
           </Link>
         </div>
-        <div className="feature-grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="feature-grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
           {projects.map((project) => (
             <article className="project-card min-w-0" key={project.slug}>
               <div className="project-art relative overflow-hidden">
@@ -479,6 +486,7 @@ export default function HomePage() {
           </Link>
         </div>
       </section>
+      
 
       {/* Financial year impact */}
       <section className="page-shell">
@@ -487,7 +495,7 @@ export default function HomePage() {
         <div className="mx-auto max-w-2xl text-center">
           <p className="eyebrow">Our journey</p>
 
-          <h2 className="mt-2 text-3xl font-bold tracking-tight text-[var(--color-ink)] sm:text-4xl">
+          <h2 className="mt-2 text-3xl font-bold tracking-tight text-[var(--color-ink)] md:text-4xl">
             Financial Year Impact
           </h2>
 
@@ -552,7 +560,7 @@ export default function HomePage() {
 
       {/* CTA banner */}
       <section className="page-shell">
-        <div className="relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-[#063F30] via-[#087653] to-[#229C73] px-6 py-9 text-center text-white shadow-[0_20px_55px_rgba(6,78,59,0.18)] sm:px-10 sm:py-11 md:px-12">
+        <div className="relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-[#063F30] via-[#087653] to-[#229C73] px-6 py-9 text-center text-white shadow-[0_20px_55px_rgba(6,78,59,0.18)] md:px-10 md:py-11 md:px-12">
 
           {/* Decorative glow */}
           <div className="pointer-events-none absolute -right-20 -top-24 h-56 w-56 rounded-full bg-[#F1D080]/15 blur-3xl" />
@@ -569,7 +577,7 @@ export default function HomePage() {
             </div>
 
             {/* Heading */}
-            <h2 className="mt-4 text-3xl font-bold leading-tight tracking-tight sm:text-4xl">
+            <h2 className="mt-4 text-3xl font-bold leading-tight tracking-tight md:text-4xl">
               Together, we can make
               <span className="block text-[#F1D080]">
                 a real difference.
@@ -577,24 +585,24 @@ export default function HomePage() {
             </h2>
 
             {/* Description */}
-            <p className="mx-auto mt-4 max-w-xl text-sm leading-6 text-white/80 sm:text-base">
+            <p className="mx-auto mt-4 max-w-xl text-sm leading-6 text-white/80 md:text-base">
               Your support helps SMILE reach families, empower communities,
               support children and respond when people need help most.
             </p>
 
             {/* Actions */}
-            <div className="mt-7 flex flex-col justify-center gap-3 sm:flex-row">
+            <div className="mt-7 flex flex-col justify-center gap-3 md:flex-row">
 
               <Link
                 href="/donate"
-                className="inline-flex min-h-11 w-full items-center justify-center rounded-full bg-gradient-to-r from-[#D9AE55] via-[#F1D080] to-[#C69232] px-7 text-sm font-bold text-[#12382C] shadow-lg transition hover:-translate-y-0.5 hover:shadow-xl sm:w-auto"
+                className="inline-flex min-h-11 w-full items-center justify-center rounded-full bg-gradient-to-r from-[#D9AE55] via-[#F1D080] to-[#C69232] px-7 text-sm font-bold text-[#12382C] shadow-lg transition hover:-translate-y-0.5 hover:shadow-xl md:w-auto"
               >
                 Donate Now
               </Link>
 
               <Link
                 href="/volunteers"
-                className="inline-flex min-h-11 w-full items-center justify-center rounded-full border border-white/25 bg-white/10 px-7 text-sm font-semibold text-white backdrop-blur transition hover:bg-white hover:text-[#07543D] sm:w-auto"
+                className="inline-flex min-h-11 w-full items-center justify-center rounded-full border border-white/25 bg-white/10 px-7 text-sm font-semibold text-white backdrop-blur transition hover:bg-white hover:text-[#07543D] md:w-auto"
               >
                 Volunteer With Us
               </Link>
@@ -623,7 +631,7 @@ export default function HomePage() {
             <p><strong className="text-[var(--color-ink)]">Verification:</strong> upload screenshot, admin approves or rejects.</p>
           </div>
         </article>
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
           {[
             { icon: HeartHandshake, title: "Program-led", body: "Every appeal links to active community work." },
             { icon: Landmark, title: "Auditable", body: "Reports, ledgers and policies remain visible." },
@@ -645,7 +653,7 @@ export default function HomePage() {
       <section className="page-shell">
         <p className="eyebrow text-center">What people say</p>
         <h2 className="mt-2 text-center text-3xl font-semibold">Members' Testimonials</h2>
-        <div className="feature-grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="feature-grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
           {testimonials.map((item) => (
             <article className="testimonial-card min-w-0" key={item.name}>
               <span className="quote-mark">"</span>
@@ -669,7 +677,7 @@ export default function HomePage() {
         <div className="min-w-0">
           <p className="eyebrow">{membershipInfo.eyebrow}</p>
 
-          <h2 className="mt-2 text-3xl font-bold tracking-tight text-[var(--color-ink)] sm:text-4xl">
+          <h2 className="mt-2 text-3xl font-bold tracking-tight text-[var(--color-ink)] md:text-4xl">
             {membershipInfo.title}
           </h2>
 
@@ -677,7 +685,7 @@ export default function HomePage() {
             {membershipInfo.body}
           </p>
 
-          <ul className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2">
+          <ul className="mt-5 grid grid-cols-1 gap-3 md:grid-cols-2">
             {membershipInfo.tiers.map((tier) => (
               <li
                 key={tier}
@@ -698,7 +706,7 @@ export default function HomePage() {
         </div>
 
         {/* Right — Premium membership CTA */}
-        <article className="relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-[#063F30] via-[#087653] to-[#229C73] p-7 text-center text-white shadow-[0_18px_50px_rgba(6,78,59,0.18)] sm:p-8">
+        <article className="relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-[#063F30] via-[#087653] to-[#229C73] p-7 text-center text-white shadow-[0_18px_50px_rgba(6,78,59,0.18)] md:p-8">
 
           {/* Decorative glow */}
           <div className="pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full bg-[#F1D080]/15 blur-3xl" />
@@ -757,7 +765,7 @@ export default function HomePage() {
           </p>
         </div>
 
-        <div className="content-grid mt-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="content-grid mt-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
           {managementTeam.map((member) => (
             <article
               key={member.name}
@@ -896,30 +904,7 @@ export default function HomePage() {
 
       <FacebookUpdates />
 
-      <section className="page-shell grid gap-5 md:grid-cols-2">
-        <article className="soft-card min-w-0">
-          <p className="eyebrow">People</p>
-          <h2 className="mt-2 text-2xl font-semibold">Field team and volunteers</h2>
-          <div className="mt-4 grid gap-3">
-            {team.map((member) => (
-              <p key={member.name} className="rounded-2xl bg-[#fff7ec] p-3 text-sm">
-                <strong>{member.name}</strong> · {member.role}
-              </p>
-            ))}
-          </div>
-        </article>
-        <article className="soft-card min-w-0">
-          <p className="eyebrow">Documents</p>
-          <h2 className="mt-2 text-2xl font-semibold">Ready for donor review</h2>
-          <div className="mt-4 grid gap-3">
-            {reports.map((report) => (
-              <p key={report.title} className="rounded-2xl bg-[#f4fbf6] p-3 text-sm">
-                <strong>{report.title}</strong> · {report.meta}
-              </p>
-            ))}
-          </div>
-        </article>
-      </section>
+      
     </main>
   );
 }

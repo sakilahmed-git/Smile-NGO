@@ -51,11 +51,11 @@ export default function ProjectsPage() {
 
       <section className="mt-10">
         <div className="banner-cta">
-          <h2 className="text-2xl font-semibold sm:text-3xl">Support a Project You Care About</h2>
+          <h2 className="text-2xl font-semibold md:text-3xl">Support a Project You Care About</h2>
           <p className="mx-auto mt-2 max-w-xl text-sm leading-6 text-white/90">
             Your contribution directly funds our on-ground work.
           </p>
-          <div className="mt-6 flex flex-col justify-center gap-3 sm:flex-row">
+          <div className="mt-6 flex flex-col justify-center gap-3 md:flex-row">
             <Link href="/donate" className="btn-primary bg-white !text-[var(--color-brand-strong)] hover:bg-white/90">
               Donate Now
             </Link>

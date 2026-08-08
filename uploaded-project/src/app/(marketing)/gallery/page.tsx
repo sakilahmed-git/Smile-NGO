@@ -49,7 +49,7 @@ export default async function GalleryPage({
               {selectedAlbum.description}
             </p>
           </div>
-          <div className="mt-5 columns-1 gap-4 sm:columns-2 lg:columns-3">
+          <div className="mt-5 columns-1 gap-4 md:columns-2 lg:columns-3">
             {images.map((src, index) => (
               <figure key={src} className="mb-4 break-inside-avoid overflow-hidden rounded-[var(--radius-lg)] bg-white shadow-soft">
                 <div className="relative aspect-[4/5]">

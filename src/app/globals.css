@@ -115,6 +115,23 @@ body {
 .premium-shine {
   position: relative;
   overflow: hidden;
+  background:
+    linear-gradient(
+      135deg,
+      #07553e 0%,
+      #16805f 45%,
+      #2ca77e 72%,
+      #16805f 100%
+    );
+
+  box-shadow:
+    0 9px 24px rgba(7, 85, 62, 0.20),
+    inset 0 1px 0 rgba(255,255,255,0.20);
+
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    filter 180ms ease;
 }
 
 .premium-shine::after {
@@ -265,7 +282,7 @@ textarea:focus-visible {
   }
 
   .btn-primary {
-  @apply inline-flex min-h-11 items-center justify-center rounded-full px-5 text-sm font-semibold text-white;
+  @apply inline-flex min-h-10 items-center justify-center rounded-full px-5 text-sm font-semibold text-white;
 
   background:
     linear-gradient(
@@ -351,21 +368,34 @@ textarea:focus-visible {
     );
 }
   .page-shell {
-    @apply mx-auto max-w-6xl px-4 py-8 sm:px-5 md:py-12;
+    @apply mx-auto max-w-6xl px-4 py-4 md:px-5 md:py-12;
   }
 
   .section-hero {
     @apply mx-auto max-w-3xl py-8 text-center md:py-16;
   }
 
+  @keyframes premiumPulse {
+  0%,
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+  }
+
+  50% {
+    transform: scale(1.025);
+    box-shadow: 0 0 0 7px rgba(16, 185, 129, 0.08);
+  }
+}
+
   .section-hero h1,
   .hero-title {
-    @apply mt-3 text-4xl font-semibold leading-[1.04] tracking-normal text-[var(--color-ink)] sm:text-5xl md:text-6xl;
+    @apply mt-3 text-4xl font-semibold leading-[1.04] tracking-normal text-[var(--color-ink)] md:text-5xl md:text-6xl;
   }
 
   .section-hero p:not(.eyebrow),
   .hero-copy {
-    @apply mx-auto mt-4 max-w-2xl text-base leading-7 text-[var(--color-muted)] sm:text-lg;
+    @apply mx-auto mt-4 max-w-2xl text-base leading-7 text-[var(--color-muted)] md:text-lg;
   }
 
   .eyebrow {
@@ -389,7 +419,7 @@ textarea:focus-visible {
   }
 
   .content-grid {
-    @apply grid gap-4 sm:grid-cols-2 lg:grid-cols-4;
+    @apply grid gap-4 md:grid-cols-2 lg:grid-cols-4;
   }
 
   .feature-grid {
@@ -548,7 +578,7 @@ textarea:focus-visible {
 
 @layer components {
   .stat-strip {
-    @apply grid grid-cols-2 gap-4 rounded-[var(--radius-lg)] border border-black/5 bg-white p-5 shadow-soft sm:grid-cols-4;
+    @apply grid grid-cols-2 gap-4 rounded-[var(--radius-lg)] border border-black/5 bg-white p-5 shadow-soft md:grid-cols-4;
   }
 
   .status-pill {
@@ -656,7 +686,7 @@ textarea:focus-visible {
   }
 
   .banner-cta {
-  @apply flex flex-col items-center gap-4 rounded-[var(--radius-lg)] p-6 text-center text-white sm:flex-row sm:justify-between sm:text-left md:p-8;
+  @apply flex flex-col items-center gap-4 rounded-[var(--radius-lg)] p-6 text-center text-white md:flex-row md:justify-between md:text-left md:p-8;
 
   background:
     radial-gradient(

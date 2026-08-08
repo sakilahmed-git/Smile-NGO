@@ -103,33 +103,28 @@ export const blogPosts = [
 
 export const events = [
   {
-    slug: "monthly-health-camp",
-    title: "Monthly Health Camp",
-    excerpt: "Screening, nutrition counselling and referral support for families.",
-    image: "/events/health-camp.svg",
-    date: "2026-08-18",
-    location: "Patna Community Centre",
+    slug: "monthly-general-meeting",
+    title: "Monthly General Meeting",
+    excerpt:
+      "All members are requested to attend the monthly general meeting. Agenda will be shared in advance.",
+    image: "/events/general-meeting.svg",
+    date: "2026-08-13",
+    location: "Community Hall",
     published: true,
     status: "Upcoming",
-    time: "10:00 AM",
-  },
-];
-
-export const facebookFallbackPosts = [
-  {
-    title: "Learning Lab reopened after monsoon repairs",
-    date: "Aug 2, 2026",
-    body: "Students returned to a refreshed centre with new reading corners and mentoring circles.",
+    time: "11:00 AM",
   },
   {
-    title: "Nutrition kits verified and delivered",
-    date: "Jul 27, 2026",
-    body: "Field coordinators completed beneficiary verification before distributing monthly kits.",
-  },
-  {
-    title: "Volunteer weekend completed",
-    date: "Jul 20, 2026",
-    body: "New volunteers trained on safeguarding, documentation and respectful field communication.",
+    slug: "community-service-drive",
+    title: "Community Service Drive",
+    excerpt:
+      "A cleanliness and awareness drive — volunteers welcome!",
+    image: "/events/community-service-drive.svg",
+    date: "2026-08-24",
+    location: "Local Area",
+    published: true,
+    status: "Upcoming",
+    time: "09:00 AM",
   },
 ];
 
@@ -248,7 +243,7 @@ export const financialYearImpact = {
     "A snapshot of SMILE NGO's growing work across education, health, environment, community development and humanitarian support.",
   years: [
     {
-      year: "FY 2025–26",
+      year: "FY 2025-26",
       stats: [
         { label: "Children & students reached", value: "500+" },
         { label: "Community programmes", value: "10+" },
@@ -257,7 +252,7 @@ export const financialYearImpact = {
       ],
     },
     {
-      year: "FY 2024–25",
+      year: "FY 2024-25",
       stats: [
         { label: "Organisation established", value: "2025" },
         { label: "Core focus", value: "Community welfare" },
@@ -279,10 +274,13 @@ export const membershipInfo = {
 };
 
 export const managementTeam = [
-  { name: "Rubul Ahmed", role: "Founder and General Secretary" },
-  { name: "Ariful Hassan Khan", role: "President" },
+  
+  
+  { name: "Ariful Hassan Khan", role: "Co-Founder & President" },
+  { name: "Rubul Ahmed Sheikh", role: "Co-Founder & General Secretary" },
   { name: "Hafizur Rahman Bhuyan", role: "Vice-President" },
   { name: "Habibar Rahman", role: "Assistant Secretary" },
+  { name: "Shahin Hossain", role: "Treasurer" },
 ];
 
 export const testimonials = [

@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { Providers } from "@/providers";
 import { siteConfig } from "@/config/site.config";
@@ -24,6 +24,11 @@ export const metadata: Metadata = {
     siteName: "SMILE NGO",
     type: "website",
   },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
 };
 
 export default function RootLayout({
