@@ -41,7 +41,7 @@ export default function ProjectsPage() {
 
   {/* Total */}
   <div className="rounded-[var(--radius-lg)] border border-emerald-900/5 bg-white p-4 shadow-[0_8px_25px_rgba(6,78,59,0.05)]">
-    <p className="text-2xl font-semibold leading-none">
+    <p className="text-2xl font-bold leading-none tracking-tight text-[var(--color-foreground)]">
       {projects.length}
     </p>
 
@@ -52,7 +52,7 @@ export default function ProjectsPage() {
 
   {/* Completed */}
   <div className="rounded-[var(--radius-lg)] border border-emerald-900/5 bg-white p-4 shadow-[0_8px_25px_rgba(6,78,59,0.05)]">
-    <p className="text-2xl font-semibold leading-none">
+    <p className="text-2xl font-bold leading-none tracking-tight text-[var(--color-foreground)]">
       {projects.filter((project) => project.status === "Completed").length}
     </p>
 
@@ -69,7 +69,7 @@ export default function ProjectsPage() {
         <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-[var(--color-brand)]" />
       </span>
 
-      <p className="text-2xl font-semibold leading-none">
+      <p className="text-2xl font-bold leading-none tracking-tight text-[var(--color-foreground)]">
         {ongoingProjects.length}
       </p>
     </div>

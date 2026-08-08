@@ -23,9 +23,7 @@ export function MarketingShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const { canInstall, isStandalone, install, dismissInstallPrompt } = usePwa();
   const [installVisible, setInstallVisible] = useState(false);
-  const whatsappRef = useRef<HTMLAnchorElement>(null);
-const [whatsappDragging, setWhatsappDragging] = useState(false);
-  
+
 
   useEffect(() => {
     if (!canInstall || isStandalone) {
@@ -137,43 +135,23 @@ const [whatsappDragging, setWhatsappDragging] = useState(false);
 
 {children}</main>
       <div className="fixed inset-0 z-50 pointer-events-none">
-  <Draggable
-  nodeRef={whatsappRef}
-  handle=".whatsapp-drag-handle"
-  onStart={() => {
-    setWhatsappDragging(false);
-  }}
-  onDrag={() => {
-    setWhatsappDragging(true);
-  }}
-  onStop={() => {
-    setTimeout(() => {
-      setWhatsappDragging(false);
-    }, 50);
-  }}
->
   <a
-    ref={whatsappRef}
-    href={`https://wa.me/${siteConfig.whatsapp}`}
-    aria-label="Chat with SMILE NGO on WhatsApp"
-    className="whatsapp-float whatsapp-drag-handle"
-    onClick={(e) => {
-      if (whatsappDragging) {
-        e.preventDefault();
-      }
+  href="https://wa.me/917002372041?text=Hello%20Sir!"
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="Chat with SMILE NGO on WhatsApp"
+  className="whatsapp-float whatsapp-drag-handle pointer-events-auto"
+>
+  <span
+    dangerouslySetInnerHTML={{
+      __html: siWhatsapp.svg.replace(
+        "<svg ",
+        '<svg fill="white" '
+      ),
     }}
-  >
-    <span
-      dangerouslySetInnerHTML={{
-        __html: siWhatsapp.svg.replace(
-          "<svg ",
-          '<svg fill="white" '
-        ),
-      }}
-      className="h-7 w-7 [&>svg]:h-full [&>svg]:w-full"
-    />
-  </a>
-</Draggable>
+    className="h-7 w-7 [&>svg]:h-full [&>svg]:w-full"
+  />
+</a>
 </div>
       <footer className="pb-28 pt-12 md:pb-10">
         <div className="mx-auto grid max-w-6xl gap-8 px-4 md:grid-cols-[1.2fr_.8fr_.8fr]">
