@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1400" role="img" aria-label="Community care illustration">
+  <rect width="1200" height="1400" rx="80" fill="#fff7ec"/>
+  <circle cx="340" cy="320" r="170" fill="#ffe1b9"/>
+  <circle cx="810" cy="360" r="210" fill="#dfe7ff"/>
+  <rect x="190" y="560" width="820" height="560" rx="56" fill="#ffffff"/>
+  <path d="M600 980c-150-82-275-190-275-330 0-80 60-142 138-142 58 0 105 32 137 84 32-52 79-84 137-84 78 0 138 62 138 142 0 140-125 248-275 330Z" fill="#e45f35"/>
+  <path d="M290 1180c188 94 432 94 620 0" fill="none" stroke="#187e62" stroke-width="36" stroke-linecap="round"/>
+</svg>

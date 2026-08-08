@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" role="img" aria-label="Blog cover">
+  <rect width="1200" height="700" rx="48" fill="#fff7ec"/>
+  <rect x="120" y="120" width="960" height="360" rx="48" fill="#ffe1b9"/>
+  <path d="M260 560h680" stroke="#e45f35" stroke-width="44" stroke-linecap="round"/>
+</svg>

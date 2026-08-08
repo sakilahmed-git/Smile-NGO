@@ -1,0 +1,24 @@
+{
+  "name": "SMILE NGO",
+  "short_name": "SMILE",
+  "description": "Transparent community programs for education, health, nutrition and dignity.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#fffaf2",
+  "theme_color": "#e45f35",
+  "icons": [
+    {
+      "src": "/icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "/icons/maskable.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
+  ]
+}

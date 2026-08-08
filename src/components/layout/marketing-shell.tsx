@@ -1,12 +1,16 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect,useRef, useState } from "react";
+import Draggable from "react-draggable";
+import Image from "next/image";
+import { usePathname } from "next/navigation";
+import { siWhatsapp } from "simple-icons";
 import Link from "next/link";
-import { HeartHandshake, Home, Images, Landmark, Menu, MessageCircle, Users } from "lucide-react";
+import { HeartHandshake, Home, Images, Landmark, Menu, MessageCircle, Users, Zap } from "lucide-react";
 import { siteConfig } from "@/config/site.config";
 import { projects } from "@/config/content";
 import { usePwa } from "@/providers";
-
+import Marquee from "react-fast-marquee";
 const nav = [
   { href: "/", label: "Home", icon: Home },
   { href: "/projects", label: "Projects", icon: HeartHandshake },
@@ -16,8 +20,12 @@ const nav = [
 ];
 
 export function MarketingShell({ children }: { children: React.ReactNode }) {
+  const pathname = usePathname();
   const { canInstall, isStandalone, install, dismissInstallPrompt } = usePwa();
   const [installVisible, setInstallVisible] = useState(false);
+  const whatsappRef = useRef<HTMLAnchorElement>(null);
+const [whatsappDragging, setWhatsappDragging] = useState(false);
+  
 
   useEffect(() => {
     if (!canInstall || isStandalone) {
@@ -48,13 +56,27 @@ export function MarketingShell({ children }: { children: React.ReactNode }) {
       <a className="skip-link" href="#main-content">
         Skip to content
       </a>
-      <header className="sticky top-0 z-40 border-b border-black/5 bg-white/90 backdrop-blur-xl">
+      <header className="sticky top-0 z-40 border-b border-[rgba(22,128,95,0.08)] bg-white/90 backdrop-blur-xl">
         <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4">
           <Link href="/" className="flex items-center gap-2 font-semibold tracking-tight">
-            <span className="grid h-10 w-10 place-items-center rounded-2xl bg-[var(--color-brand)] text-white shadow-soft">
-              <HeartHandshake size={21} aria-hidden />
-            </span>
-            <span>{siteConfig.name}</span>
+            <span className="relative h-11 w-11 overflow-hidden rounded-2xl ring-1 ring-[rgba(196,151,69,0.20)] shadow-[0_7px_20px_rgba(7,85,62,0.12)]">
+  <Image
+  src="/logos/15bab117-44da-452d-9634-698c45c64771 (1).webp"
+  alt="SMILE NGO"
+  fill
+  className="object-contain"
+  priority
+/>
+</span>
+            <span className="text-[17px] font-black tracking-[-0.035em]">
+  <span className="bg-gradient-to-tr from-[#063F30] via-[#2FAF79] to-[#0A5B43] bg-clip-text text-transparent">
+    SMILE
+  </span>
+  <span className="mx-1"></span>
+  <span className="bg-gradient-to-tr from-[#805516] via-[#E7C46A] to-[#A87325] bg-clip-text text-transparent">
+    NGO
+  </span>
+</span>
           </Link>
           <div className="hidden items-center gap-2 md:flex">
             {nav.map((item) => (
@@ -78,14 +100,81 @@ export function MarketingShell({ children }: { children: React.ReactNode }) {
           <Menu className="hidden" aria-hidden />
         </nav>
       </header>
-      <main id="main-content">{children}</main>
-      <a
-        className="whatsapp-float"
-        href={`https://wa.me/${siteConfig.whatsapp}`}
-        aria-label="Chat with SMILE NGO on WhatsApp"
+      <main id="main-content">{/* Global announcement bar */}
+<div className="announcement-bar">
+  <div className="announcement-inner">
+    <div className="announcement-label">
+      <Zap size={15} strokeWidth={2.5} />
+      <span>LATEST</span>
+    </div>
+
+    <div className="announcement-ticker">
+      <Marquee
+        speed={45}
+        pauseOnHover
+        gradient={false}
+        autoFill
       >
-        <MessageCircle size={24} aria-hidden />
-      </a>
+        <span className="announcement-item">
+          ► Assam Flood Relief Campaign is now accepting donations
+        </span>
+
+        <span className="announcement-item">
+          ► Volunteer registrations are open
+        </span>
+
+        <span className="announcement-item">
+          ► Our community programmes are underway
+        </span>
+
+        <span className="announcement-item">
+          ► Welcome to the new SMILE NGO website
+        </span>
+      </Marquee>
+    </div>
+  </div>
+</div>
+
+{children}</main>
+      <div className="fixed inset-0 z-50 pointer-events-none">
+  <Draggable
+  nodeRef={whatsappRef}
+  handle=".whatsapp-drag-handle"
+  onStart={() => {
+    setWhatsappDragging(false);
+  }}
+  onDrag={() => {
+    setWhatsappDragging(true);
+  }}
+  onStop={() => {
+    setTimeout(() => {
+      setWhatsappDragging(false);
+    }, 50);
+  }}
+>
+  <a
+    ref={whatsappRef}
+    href={`https://wa.me/${siteConfig.whatsapp}`}
+    aria-label="Chat with SMILE NGO on WhatsApp"
+    className="whatsapp-float whatsapp-drag-handle"
+    onClick={(e) => {
+      if (whatsappDragging) {
+        e.preventDefault();
+      }
+    }}
+  >
+    <span
+      dangerouslySetInnerHTML={{
+        __html: siWhatsapp.svg.replace(
+          "<svg ",
+          '<svg fill="white" '
+        ),
+      }}
+      className="h-7 w-7 [&>svg]:h-full [&>svg]:w-full"
+    />
+  </a>
+</Draggable>
+</div>
       <footer className="pb-28 pt-12 md:pb-10">
         <div className="mx-auto grid max-w-6xl gap-8 px-4 md:grid-cols-[1.2fr_.8fr_.8fr]">
           <div>
@@ -112,14 +201,26 @@ export function MarketingShell({ children }: { children: React.ReactNode }) {
       </footer>
       <nav className="mobile-tabbar" aria-label="Primary">
         {nav.map((item) => {
-          const Icon = item.icon;
-          return (
-            <Link key={item.href} href={item.href} className="mobile-tab">
-              <Icon size={19} aria-hidden />
-              <span>{item.label}</span>
-            </Link>
-          );
-        })}
+  const Icon = item.icon;
+
+  const isActive =
+    item.href === "/"
+      ? pathname === "/"
+      : pathname.startsWith(item.href);
+
+  return (
+    <Link
+      key={item.href}
+      href={item.href}
+      className={`mobile-tab ${
+        item.href === "/contact" ? "hidden md:flex" : ""
+      } ${isActive ? "mobile-tab-active" : ""}`}
+    >
+      <Icon size={19} aria-hidden />
+      <span>{item.label}</span>
+    </Link>
+  );
+})}
       </nav>
 
       {installVisible ? (

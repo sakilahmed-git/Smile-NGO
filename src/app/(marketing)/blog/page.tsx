@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { blogPosts } from "@/config/content";
+import { FacebookUpdates } from "@/components/sections/facebook-updates";
 
 export default function BlogPage() {
   return (
@@ -30,6 +31,7 @@ export default function BlogPage() {
           </article>
         ))}
       </section>
+      <FacebookUpdates />
     </main>
   );
 }

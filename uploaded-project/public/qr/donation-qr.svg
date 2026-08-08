@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Donation QR placeholder">
+  <rect width="512" height="512" fill="#fffaf2"/>
+  <rect x="48" y="48" width="120" height="120" fill="#17211c"/>
+  <rect x="76" y="76" width="64" height="64" fill="#fffaf2"/>
+  <rect x="344" y="48" width="120" height="120" fill="#17211c"/>
+  <rect x="372" y="76" width="64" height="64" fill="#fffaf2"/>
+  <rect x="48" y="344" width="120" height="120" fill="#17211c"/>
+  <rect x="76" y="372" width="64" height="64" fill="#fffaf2"/>
+  <path d="M224 64h40v40h-40zm80 0h32v80h-32zM216 184h88v40h-88zm128 16h40v40h-40zm-160 72h40v72h-40zm80 24h104v40H264zm152 0h48v48h-48zM216 392h48v56h-48zm88-40h40v112h-40zm72 40h88v40h-88z" fill="#17211c"/>
+</svg>
