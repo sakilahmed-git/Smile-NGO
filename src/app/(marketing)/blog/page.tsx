@@ -146,7 +146,7 @@ export default function BlogPage() {
                   height="1000"
                   title="SMILE NGO Instagram Feed"
                   loading="lazy"
-                  scrolling="no"
+                  scrolling="yes"
                   className="block w-full border-0"
                 />
               </div>
