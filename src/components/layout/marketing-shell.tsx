@@ -313,6 +313,7 @@ export function MarketingShell({ children }: { children: React.ReactNode }) {
                 src="/logos/15bab117-44da-452d-9634-698c45c64771 (1).webp"
                 alt="SMILE NGO"
                 fill
+                sizes="full"
                 className="object-contain"
               />
             </span>

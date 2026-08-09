@@ -5,18 +5,28 @@ import { siteConfig } from "@/config/site.config";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
+
   title: {
     default: "SMILE NGO | Transparent Community Impact",
     template: "%s | SMILE NGO",
   },
+
   description: siteConfig.description,
   applicationName: "SMILE NGO",
+
   manifest: "/manifest.webmanifest",
+
+  icons: {
+    icon: "/logos/15bab117-44da-452d-9634-698c45c64771 (1).webp",
+    apple: "/logos/15bab117-44da-452d-9634-698c45c64771 (1).webp",
+  },
+
   appleWebApp: {
     capable: true,
     title: "SMILE NGO",
     statusBarStyle: "default",
   },
+
   openGraph: {
     title: "SMILE NGO",
     description: siteConfig.description,

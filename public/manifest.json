@@ -10,14 +10,14 @@
   "theme_color": "#e45f35",
   "icons": [
     {
-      "src": "/icons/icon.svg",
+      "src": "/logos/15bab117-44da-452d-9634-698c45c64771 (1)-modified.png",
       "sizes": "any",
-      "type": "image/svg+xml"
+      "type": "image/webp"
     },
     {
-      "src": "/icons/maskable.svg",
+      "src": "/logos/15bab117-44da-452d-9634-698c45c64771 (1)-modified.png",
       "sizes": "any",
-      "type": "image/svg+xml",
+      "type": "image/webp",
       "purpose": "maskable"
     }
   ]
