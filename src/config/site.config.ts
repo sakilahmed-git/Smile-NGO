@@ -2,7 +2,7 @@ export const siteConfig = {
   name: "SMILE NGO",
   description:
     "SMILE NGO is a community-led NGO in Kokrajhar and Gossaigaon, Assam, supporting education, health, relief and community development work for families and children.",
-  url: "https://smilengo.org.in",
+  url: "https://www.smilengo.org.in",
   phone: "+91 7002372041/+91 7002683620",
   email: "smilengo2025@gmail.com",
   address: "Burichatam No.1, Gossaigaon, Kokrajhar, Assam, 783361",

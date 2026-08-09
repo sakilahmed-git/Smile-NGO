@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
 
   title: {
-    default: "SMILE NGO | Community-led NGO in Kokrajhar & Gossaigaon, Assam",
+    default: "SMILE NGO | Transparent Community Impact",
     template: "%s | SMILE NGO",
   },
 
@@ -22,8 +22,12 @@ export const metadata: Metadata = {
   manifest: "/manifest.webmanifest",
 
   icons: {
-    icon: "/logos/15bab117-44da-452d-9634-698c45c64771 (1)-modified.png",
-    apple: "/logos/15bab117-44da-452d-9634-698c45c64771 (1)-modified.png",
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon-96x96.png", sizes: "96x96", type: "image/png" },
+    ],
+    apple: "/apple-touch-icon.png",
   },
 
   appleWebApp: {

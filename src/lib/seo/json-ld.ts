@@ -111,7 +111,7 @@ export function buildWebSiteJsonLd(): Record<string, unknown> {
     "@type": "WebSite",
     "@id": `${siteConfig.url}/#website`,
     name: siteConfig.name,
-    alternateName: ["SMILE", "SMILENGO", "smile-ngo"],
+    alternateName: "smilengo.org.in",
     url: siteConfig.url,
     publisher: {
       "@id": organizationId,

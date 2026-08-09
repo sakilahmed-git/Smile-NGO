@@ -44,12 +44,16 @@ import {
 } from "@/lib/seo/metadata";
 
 export const metadata = buildSeoMetadata({
-  title: "SMILE NGO | Community-led NGO in Kokrajhar & Gossaigaon, Assam",
+  title: "SMILE NGO | Transparent Community Impact",
   description:
     "SMILE NGO is a community-led NGO in Kokrajhar and Gossaigaon, Assam, supporting education, health, relief and community development work.",
   path: "/",
   type: "website",
 });
+
+metadata.title = {
+  absolute: "SMILE NGO | Transparent Community Impact",
+};
 
 export default function HomePage() {
   const galleryPreviewAlbum = galleryAlbums.find((album) => album.published);

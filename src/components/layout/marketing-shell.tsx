@@ -39,7 +39,6 @@ const desktopNav = [
   { href: "/projects", label: "Projects" },
   { href: "/locations/kokrajhar-gossaigaon-assam", label: "Locations" },
   { href: "/gallery", label: "Gallery" },
-  { href: "/insights", label: "Insights" },
   { href: "/blog", label: "Blog" },
   { href: "/volunteers", label: "Volunteer" },
   { href: "/events", label: "Events" },
@@ -50,7 +49,6 @@ const desktopNav = [
 const mobileNav = [
   { href: "/", label: "Home", icon: Home },
   { href: "/projects", label: "Projects", icon: HeartHandshake },
-  { href: "/insights", label: "Insights", icon: Sparkles },
   { href: "/blog", label: "Blog", icon: Newspaper },
   { href: "/volunteers", label: "Volunteer", icon: Users },
   { href: "/contact", label: "Contact", icon: MessageCircle },
