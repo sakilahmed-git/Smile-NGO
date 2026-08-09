@@ -33,6 +33,15 @@ const nav = [
   { href: "/contact", label: "Contact", icon: MessageCircle },
 ];
 
+const desktopNav = [
+  { href: "/", label: "Home" },
+  { href: "/projects", label: "Projects" },
+  { href: "/gallery", label: "Gallery" },
+  { href: "/blog", label: "Blog" },
+  { href: "/volunteers", label: "Volunteer" },
+  { href: "/events", label: "Events" },
+];
+
 // Mobile bottom tab bar only — Blog replaces Gallery here, everything else
 // (desktop header nav + drawer) keeps Gallery as-is.
 const mobileNav = [
@@ -128,30 +137,24 @@ export function MarketingShell({ children }: { children: React.ReactNode }) {
           </Link>
 
           <div className="hidden items-center gap-2 md:flex">
-            {nav.map((item) => (
-              <Link key={item.href} href={item.href} className="nav-link">
-                {item.label}
-              </Link>
-            ))}
-            <Link href="/login" className="nav-link">
-              Login
-            </Link>
-            <Link href="/register" className="btn-secondary">
-              Register
-            </Link>
-            <Link href="/donate" className="btn-primary">
-              Donate
-            </Link>
-            <button
-              type="button"
-              onClick={() => setDrawerOpen(true)}
-              aria-label="Open menu"
-              aria-expanded={drawerOpen}
-              className="ml-1 flex h-10 w-10 items-center justify-center rounded-full border border-[rgba(22,128,95,0.15)] bg-white text-[var(--color-ink)] shadow-sm transition hover:bg-[rgba(22,128,95,0.06)]"
-            >
-              <Menu className="h-5 w-5" />
-            </button>
-          </div>
+  {desktopNav.map((item) => (
+    <Link
+      key={item.href}
+      href={item.href}
+      className="nav-link"
+    >
+      {item.label}
+    </Link>
+  ))}
+
+  <Link href="/login" className="nav-link">
+    Login
+  </Link>
+
+  <Link href="/donate" className="btn-primary">
+    Donate
+  </Link>
+</div>
 
           {/* Mobile: Donate + Menu */}
           <div className="flex items-center gap-2 md:hidden">
