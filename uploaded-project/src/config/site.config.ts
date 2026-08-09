@@ -2,7 +2,7 @@ export const siteConfig = {
   name: "SMILE NGO",
   description:
     "A transparent, community-led NGO platform supporting education, health, nutrition and dignity programs for children and families.",
-  url: "https://smilengo.org",
+  url: "https://smilengo.org.in",
   phone: "+91 7002372041/+91 7002683620",
   email: "smilengo2025@gmail.com",
   address: "Burichatam No.1, Gossaigaon, Kokrajhar, Assam, 783361",
