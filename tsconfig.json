@@ -18,6 +18,9 @@
     "jsx": "react-jsx",
     "incremental": true,
     "paths": {
+      "@/content/*": [
+        "./content/*"
+      ],
       "@/*": [
         "./src/*"
       ]

@@ -356,6 +356,59 @@ textarea:focus-visible {
     color 180ms ease,
     background 180ms ease;
 }
+.insight-content {
+  color: var(--color-foreground);
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+.insight-content h2 {
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  font-size: 1.75rem;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+}
+
+.insight-content h3 {
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+  font-size: 1.35rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.insight-content p {
+  margin-top: 1rem;
+}
+
+.insight-content ul,
+.insight-content ol {
+  margin-top: 1rem;
+  padding-left: 1.5rem;
+}
+
+.insight-content li {
+  margin-top: 0.4rem;
+}
+
+.insight-content a {
+  color: var(--color-green);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.insight-content blockquote {
+  margin: 2rem 0;
+  border-left: 3px solid var(--color-green);
+  padding-left: 1.25rem;
+  color: var(--color-muted);
+  font-style: italic;
+}
+
+.insight-content strong {
+  font-weight: 650;
+}
 
 .nav-link:hover {
   color: #07553e;

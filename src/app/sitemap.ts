@@ -1,6 +1,7 @@
 import { MetadataRoute } from "next";
 import { siteConfig } from "@/config/site.config";
 import { projects } from "@/config/content";
+import { insights } from "@/content/insights/articles";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes = [
@@ -25,6 +26,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })),
     ...projects.map((project) => ({
       url: `${siteConfig.url}/projects/${project.slug}`,
+      lastModified: new Date(),
+    })),
+    ...insights.map((article) => ({
+      url: `${siteConfig.url}/insights/${article.slug}`,
       lastModified: new Date(),
     })),
   ];
