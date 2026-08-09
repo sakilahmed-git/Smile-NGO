@@ -9,6 +9,7 @@ import {
   buildArticleJsonLd,
   buildBreadcrumbJsonLd,
   buildSeoMetadata,
+  buildWebPageJsonLd,
 } from "@/lib/seo/metadata";
 
 type PageProps = {
@@ -65,7 +66,13 @@ export default async function InsightPage({ params }: PageProps) {
     .slice(0, 3);
   const Content = await loadInsightContent(article.contentPath);
   const articleJsonLd = buildArticleJsonLd(article);
+  const webPageJsonLd = buildWebPageJsonLd({
+    path: `/insights/${article.slug}`,
+    name: article.title,
+    description: article.seoDescription ?? article.excerpt,
+  });
   const breadcrumbJsonLd = buildBreadcrumbJsonLd([
+    { name: "Home", url: "/" },
     { name: "Insights", url: "/insights" },
     { name: article.title, url: `/insights/${article.slug}` },
   ]);
@@ -75,6 +82,10 @@ export default async function InsightPage({ params }: PageProps) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageJsonLd) }}
       />
       <script
         type="application/ld+json"
@@ -188,9 +199,47 @@ export default async function InsightPage({ params }: PageProps) {
               ))}
             </div>
           ) : (
-            <p className="mt-4 text-sm text-[var(--color-muted)]">
-              More insights will be published here as the section grows.
-            </p>
+            <div className="mt-6 grid gap-4 md:grid-cols-3">
+              {[
+                {
+                  href: "/locations/kokrajhar-gossaigaon-assam",
+                  label: "Local work",
+                  title: "SMILE NGO in Kokrajhar and Gossaigaon",
+                  excerpt:
+                    "See how our community development work is connected to Kokrajhar, Gossaigaon and nearby BTC/Bodoland areas.",
+                },
+                {
+                  href: "/projects",
+                  label: "Programmes",
+                  title: "Current SMILE NGO programmes",
+                  excerpt:
+                    "Explore education, relief, environment and community support programmes connected to our field work.",
+                },
+                {
+                  href: "/about",
+                  label: "About",
+                  title: "About SMILE NGO",
+                  excerpt:
+                    "Learn about SMILE NGO's registration, focus areas and community-led approach in Assam.",
+                },
+              ].map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className="rounded-[20px] border border-black/[0.06] bg-white p-4 transition hover:-translate-y-0.5 hover:border-[var(--color-green)]/20 hover:shadow-[0_10px_28px_rgba(7,85,62,0.06)]"
+                >
+                  <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-[var(--color-green)]">
+                    {item.label}
+                  </p>
+                  <h3 className="mt-2 text-base font-semibold tracking-[-0.02em]">
+                    {item.title}
+                  </h3>
+                  <p className="mt-2 text-sm leading-6 text-[var(--color-muted)]">
+                    {item.excerpt}
+                  </p>
+                </Link>
+              ))}
+            </div>
           )}
         </div>
       </article>

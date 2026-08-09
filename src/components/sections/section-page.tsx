@@ -8,6 +8,24 @@ import {
   ShieldCheck,
 } from "lucide-react";
 
+const faqItems = [
+  {
+    question: "What kind of NGO is SMILE NGO?",
+    answer:
+      "SMILE NGO is a community-led NGO working in Kokrajhar and Gossaigaon, Assam, with a focus on education, health, relief and community development.",
+  },
+  {
+    question: "Which areas does SMILE NGO serve?",
+    answer:
+      "The organization works with communities in Kokrajhar and Gossaigaon, and in nearby communities across the BTC region of Assam.",
+  },
+  {
+    question: "How can I support SMILE NGO?",
+    answer:
+      "You can donate, volunteer or get in touch through our contact page to learn about current programmes and field support needs.",
+  },
+];
+
 import {
   galleryItems,
   impactStats,

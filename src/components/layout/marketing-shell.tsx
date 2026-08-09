@@ -37,6 +37,7 @@ const nav = [
 const desktopNav = [
   { href: "/", label: "Home" },
   { href: "/projects", label: "Projects" },
+  { href: "/locations/kokrajhar-gossaigaon-assam", label: "Locations" },
   { href: "/gallery", label: "Gallery" },
   { href: "/insights", label: "Insights" },
   { href: "/blog", label: "Blog" },
@@ -265,6 +266,9 @@ export function MarketingShell({ children }: { children: React.ReactNode }) {
             <p className="footer-link">{siteConfig.email}</p>
             <p className="footer-link">{siteConfig.phone}</p>
             <p className="footer-link">{siteConfig.address}</p>
+            <Link className="footer-link" href="/locations/kokrajhar-gossaigaon-assam">
+              Kokrajhar & Gossaigaon, Assam
+            </Link>
           </div>
         </div>
       </footer>

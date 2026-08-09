@@ -2,12 +2,16 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, BookOpen, FileText, Sparkles } from "lucide-react";
 import { insights } from "@/content/insights/articles";
-import { buildSeoMetadata } from "@/lib/seo/metadata";
+import {
+  buildBreadcrumbJsonLd,
+  buildSeoMetadata,
+  buildWebPageJsonLd,
+} from "@/lib/seo/metadata";
 
 export const metadata = buildSeoMetadata({
-  title: "Insights | SMILE NGO",
+  title: "Insights | SMILE NGO | Community Development in Assam",
   description:
-    "Explore stories, insights, field notes, and resources from SMILE NGO and the communities we work alongside.",
+    "Explore stories and field perspectives from SMILE NGO on community development, education, health and local support work in Assam.",
   path: "/insights",
   type: "website",
 });
@@ -38,9 +42,27 @@ export default function InsightsPage() {
     (a, b) =>
       new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
   );
+  const webPageJsonLd = buildWebPageJsonLd({
+    path: "/insights",
+    name: "SMILE NGO Insights",
+    description:
+      "Stories and field perspectives from SMILE NGO on community development, education, health and local support work in Assam.",
+  });
+  const breadcrumbJsonLd = buildBreadcrumbJsonLd([
+    { name: "Home", url: "/" },
+    { name: "Insights", url: "/insights" },
+  ]);
 
   return (
     <main className="relative overflow-hidden">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       {/* Ambient background */}
       <div
         aria-hidden

@@ -7,6 +7,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes = [
     "",
     "/about",
+    "/locations/kokrajhar-gossaigaon-assam",
     "/projects",
     "/donate",
     "/gallery",
@@ -17,6 +18,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/reports",
     "/faq",
     "/contact",
+    "/insights",
   ];
 
   return [

@@ -41,7 +41,16 @@ export function buildSeoMetadata({
   images,
 }: CreateSeoMetadataOptions): Metadata {
   const canonical = buildAbsoluteUrl(path);
-  const ogImages = (images ?? []).map((image) => ({
+  const seoImages =
+    images && images.length > 0
+      ? images
+      : [
+          {
+            url: siteConfig.logo,
+            alt: "SMILE NGO logo",
+          },
+        ];
+  const ogImages = seoImages.map((image) => ({
     url: buildAbsoluteUrl(image.url),
     alt: image.alt ?? title,
   }));
@@ -52,10 +61,15 @@ export function buildSeoMetadata({
     alternates: {
       canonical,
     },
+    robots: {
+      index: true,
+      follow: true,
+    },
     openGraph: {
       title,
       description,
       url: canonical,
+      siteName: siteConfig.name,
       type,
       ...(publishedTime ? { publishedTime } : {}),
       ...(modifiedTime ? { modifiedTime } : {}),
@@ -66,57 +80,15 @@ export function buildSeoMetadata({
       card: "summary_large_image",
       title,
       description,
-      ...(ogImages.length > 0 ? { images: ogImages.map((image) => image.url) } : {}),
+      images: ogImages.map((image) => image.url),
     },
   };
 }
 
-export function buildArticleJsonLd(article: {
-  title: string;
-  excerpt: string;
-  coverImage: string;
-  coverImageAlt: string;
-  author: string;
-  publishedAt: string;
-  updatedAt?: string;
-  slug: string;
-}): Record<string, unknown> {
-  const canonicalUrl = buildAbsoluteUrl(`/insights/${article.slug}`);
-
-  return {
-    "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    headline: article.title,
-    description: article.excerpt,
-    image: buildAbsoluteUrl(article.coverImage),
-    author: {
-      "@type": "Person",
-      name: article.author,
-    },
-    publisher: {
-      "@type": "Organization",
-      name: siteConfig.name,
-      url: siteConfig.url,
-    },
-    datePublished: article.publishedAt,
-    dateModified: article.updatedAt ?? article.publishedAt,
-    mainEntityOfPage: {
-      "@type": "WebPage",
-      "@id": canonicalUrl,
-    },
-    url: canonicalUrl,
-  };
-}
-
-export function buildBreadcrumbJsonLd(items: Array<{ name: string; url: string }>) {
-  return {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: items.map((item, index) => ({
-      "@type": "ListItem",
-      position: index + 1,
-      name: item.name,
-      item: buildAbsoluteUrl(item.url),
-    })),
-  };
-}
+export {
+  buildArticleJsonLd,
+  buildBreadcrumbJsonLd,
+  buildOrganizationJsonLd,
+  buildWebPageJsonLd,
+  buildWebSiteJsonLd,
+} from "@/lib/seo/json-ld";

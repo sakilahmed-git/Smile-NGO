@@ -2,17 +2,22 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Providers } from "@/providers";
 import { siteConfig } from "@/config/site.config";
+import { OrganizationSchema } from "@/components/seo/organization-schema";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
 
   title: {
-    default: "SMILE NGO | Transparent Community Impact",
+    default: "SMILE NGO | Community-led NGO in Kokrajhar & Gossaigaon, Assam",
     template: "%s | SMILE NGO",
   },
 
   description: siteConfig.description,
   applicationName: "SMILE NGO",
+  robots: {
+    index: true,
+    follow: true,
+  },
 
   manifest: "/manifest.webmanifest",
 
@@ -33,6 +38,19 @@ export const metadata: Metadata = {
     url: siteConfig.url,
     siteName: "SMILE NGO",
     type: "website",
+    images: [
+      {
+        url: siteConfig.logo,
+        alt: "SMILE NGO logo",
+      },
+    ],
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "SMILE NGO",
+    description: siteConfig.description,
+    images: [siteConfig.logo],
   },
 };
 
@@ -45,6 +63,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <Providers>{children}</Providers>
+        <OrganizationSchema />
       </body>
     </html>
   );

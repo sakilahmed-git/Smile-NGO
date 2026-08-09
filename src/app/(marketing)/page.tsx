@@ -36,15 +36,49 @@ import { FacebookUpdates } from "@/components/sections/facebook-updates";
 import { AssistanceRequestForm } from "@/components/forms/assistance-request-form";
 import { HeroCarousel } from "@/components/hero/hero-carousel";
 import { galleryAlbums, getGalleryImages } from "@/lib/local-assets";
+import {
+  buildBreadcrumbJsonLd,
+  buildSeoMetadata,
+  buildWebPageJsonLd,
+  buildWebSiteJsonLd,
+} from "@/lib/seo/metadata";
+
+export const metadata = buildSeoMetadata({
+  title: "SMILE NGO | Community-led NGO in Kokrajhar & Gossaigaon, Assam",
+  description:
+    "SMILE NGO is a community-led NGO in Kokrajhar and Gossaigaon, Assam, supporting education, health, relief and community development work.",
+  path: "/",
+  type: "website",
+});
 
 export default function HomePage() {
   const galleryPreviewAlbum = galleryAlbums.find((album) => album.published);
   const galleryPreviewImages = galleryPreviewAlbum
     ? getGalleryImages(galleryPreviewAlbum.folderName).slice(0, 6)
     : [];
+  const webSiteJsonLd = buildWebSiteJsonLd();
+  const webPageJsonLd = buildWebPageJsonLd({
+    path: "/",
+    name: "SMILE NGO",
+    description:
+      "SMILE NGO is a community-led NGO in Kokrajhar and Gossaigaon, Assam, supporting education, health, relief and community development work.",
+  });
+  const breadcrumbJsonLd = buildBreadcrumbJsonLd([{ name: "Home", url: "/" }]);
 
   return (
     <main className="mx-auto w-full max-w-[1440px] px-1 md:px-6 lg:px-10 xl:px-14">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(webSiteJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
 
       {/* Hero: carousel first so it sits at the top on mobile too */}
       <section className="page-shell grid gap-0 pb-0 md:grid-cols-[1.05fr_.95fr] md:items-center md:gap-8 md:pt-8 lg:gap-12">
@@ -178,6 +212,31 @@ export default function HomePage() {
   </div>
 </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="page-shell pt-6 md:pt-8">
+        <div className="rounded-[2rem] border border-black/[0.06] bg-white p-6 shadow-soft md:p-8">
+          <p className="text-[10px] font-bold uppercase tracking-[0.24em] text-[var(--color-green)]">
+            Serving Kokrajhar and Gossaigaon
+          </p>
+          <h2 className="mt-3 text-2xl font-semibold tracking-[-0.02em] text-[var(--color-ink)]">
+            SMILE NGO is a community-led NGO in Kokrajhar and Gossaigaon, Assam.
+          </h2>
+          <p className="mt-3 max-w-3xl text-sm leading-7 text-[var(--color-muted)] md:text-base">
+            We work with families and children through education, health, relief and community development programmes, and we welcome donors, volunteers and partners who want to support practical work on the ground.
+          </p>
+          <div className="mt-5 flex flex-wrap gap-3">
+            <Link href="/about" className="text-sm font-semibold text-[var(--color-brand-strong)] underline-offset-4 hover:underline">
+              Learn about SMILE NGO
+            </Link>
+            <Link href="/locations/kokrajhar-gossaigaon-assam" className="text-sm font-semibold text-[var(--color-brand-strong)] underline-offset-4 hover:underline">
+              Explore our local focus
+            </Link>
+            <Link href="/projects" className="text-sm font-semibold text-[var(--color-brand-strong)] underline-offset-4 hover:underline">
+              See our programmes
+            </Link>
           </div>
         </div>
       </section>
