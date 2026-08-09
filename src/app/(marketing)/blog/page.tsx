@@ -36,7 +36,7 @@ export default function BlogPage() {
   className="
     relative
     overflow-hidden
-    p-4
+    p-0
   "
 >
             {/* Decorative glow */}
@@ -51,7 +51,7 @@ export default function BlogPage() {
 
             <div className="relative flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
               <div className="min-w-0">
-                <div className="mb-5 flex items-center gap-2">
+                <div className="mb-5 ml-4 mt-4 flex items-center gap-2">
                   <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#0866FF] text-white shadow-[0_6px_16px_rgba(8,102,255,0.3)]">
                     <Facebook className="h-6 w-6" />
                   </span>

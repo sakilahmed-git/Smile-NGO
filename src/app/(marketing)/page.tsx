@@ -1,6 +1,5 @@
 import Link from "next/link";
 import Image from "next/image";
-import { siteConfig } from "@/config/site.config";
 import { Phone } from "lucide-react";
 import {
   ArrowRight,
@@ -21,15 +20,13 @@ import {
   events,
   financialYearImpact,
   founderMessage,
-  impactStats,
   latestActivity,
   managementTeam,
   membershipInfo,
   objectives,
   projects,
-  reports,
+  registrationDetails,
   siteStats,
-  team,
   testimonials,
   blogPosts,
 } from "@/config/content";
@@ -151,32 +148,33 @@ export default function HomePage() {
               </div>
 
               {/* Quiet trust indicators */}
-              <div className="mt-7 flex flex-wrap items-center gap-x-5 gap-y-2 border-t border-[var(--color-border)] pt-5">
-                <div className="flex items-center gap-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-[var(--color-gold)]" />
-                  <span className="text-[11px] font-medium text-[var(--color-muted)]">
-                    Community-led
-                  </span>
-                </div>
+              {/* Quiet trust indicators */}
+<div className="mt-7 flex flex-nowrap items-center gap-x-5 overflow-x-auto border-t border-[var(--color-border)] pt-5">
+  <div className="flex shrink-0 items-center gap-2">
+    <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--color-gold)]" />
+    <span className="whitespace-nowrap text-[11px] font-medium text-[var(--color-muted)]">
+      Community-led
+    </span>
+  </div>
 
-                <div className="h-3 w-px bg-[var(--color-border-strong)]" />
+  <div className="h-3 w-px shrink-0 bg-[var(--color-border-strong)]" />
 
-                <div className="flex items-center gap-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-[var(--color-gold)]" />
-                  <span className="text-[11px] font-medium text-[var(--color-muted)]">
-                    Assam-based
-                  </span>
-                </div>
+  <div className="flex shrink-0 items-center gap-2">
+    <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--color-gold)]" />
+    <span className="whitespace-nowrap text-[11px] font-medium text-[var(--color-muted)]">
+      Assam-based
+    </span>
+  </div>
 
-                <div className="h-3 w-px bg-[var(--color-border-strong)]" />
+  <div className="h-3 w-px shrink-0 bg-[var(--color-border-strong)]" />
 
-                <div className="flex items-center gap-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-[var(--color-gold)]" />
-                  <span className="text-[11px] font-medium text-[var(--color-muted)]">
-                    Built on trust
-                  </span>
-                </div>
-              </div>
+  <div className="flex shrink-0 items-center gap-2">
+    <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--color-gold)]" />
+    <span className="whitespace-nowrap text-[11px] font-medium text-[var(--color-muted)]">
+      Built on trust
+    </span>
+  </div>
+</div>
             </div>
           </div>
         </div>
@@ -343,6 +341,38 @@ export default function HomePage() {
                 ))}
               </div>
 
+              <div className="mt-6 rounded-[1.35rem] border border-emerald-900/10 bg-[#F8FBF9] p-4 shadow-sm">
+                <div className="flex items-center gap-2">
+                  <div className="grid h-8 w-8 place-items-center rounded-full bg-emerald-100 text-emerald-700">
+                    <Landmark size={16} aria-hidden />
+                  </div>
+                  <div>
+                    <p className="text-[10px] font-bold uppercase tracking-[0.24em] text-[var(--color-brand-strong)]">
+                      Official registration
+                    </p>
+                    <p className="text-sm font-semibold text-[var(--color-ink)]">
+                      Registered NGO information
+                    </p>
+                  </div>
+                </div>
+
+                <div className="mt-4 grid gap-3 sm:grid-cols-2">
+                  {[
+                    ["Organization Type", registrationDetails.organizationType],
+                    ["Registration No.", registrationDetails.registrationNo],
+                    ["Registered On", registrationDetails.registeredOn],
+                    ["Jurisdiction", registrationDetails.jurisdiction],
+                  ].map(([label, value]) => (
+                    <div key={label} className="rounded-2xl bg-white px-3 py-3 shadow-sm ring-1 ring-emerald-900/5">
+                      <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--color-muted)]">
+                        {label}
+                      </p>
+                      <p className="mt-1 text-sm font-semibold text-[var(--color-ink)]">{value}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
               <Link
                 href="/about"
                 className="group mt-6 inline-flex items-center gap-2 rounded-full bg-[var(--color-brand)] px-5 py-3 text-sm font-semibold text-white shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:bg-[var(--color-brand-strong)] hover:shadow-md"
@@ -384,7 +414,7 @@ export default function HomePage() {
               <div className="mt-6 flex min-w-0 items-center gap-4">
                 <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-full border-2 border-white/30 bg-white/15">
   <Image
-    src="/images/627476826_2813816025664616_8282728177343720563_n.jpg"
+    src="/images/ChatGPT Image Aug 9, 2026, 10_17_56 AM.png"
     alt={founderMessage.name}
     fill
     className="object-cover"
@@ -652,11 +682,11 @@ export default function HomePage() {
       {/* Testimonials */}
       <section className="page-shell">
         <p className="eyebrow text-center">What people say</p>
-        <h2 className="mt-2 text-center text-3xl font-semibold">Members' Testimonials</h2>
+        <h2 className="mt-2 text-center text-3xl font-semibold">Members&apos; Testimonials</h2>
         <div className="feature-grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
           {testimonials.map((item) => (
             <article className="testimonial-card min-w-0" key={item.name}>
-              <span className="quote-mark">"</span>
+              <span className="quote-mark">&quot;</span>
               <p className="mt-2 text-sm italic leading-6 text-[var(--color-muted)]">{item.quote}</p>
               <div className="mt-4 flex min-w-0 items-center gap-3">
                 <span className="avatar-circle !mx-0 !h-10 !w-10 flex-none !text-sm">{item.name.charAt(0)}</span>

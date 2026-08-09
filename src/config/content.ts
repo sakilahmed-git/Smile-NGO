@@ -34,7 +34,7 @@ export const projects = [
 
   {
     slug: "student-recognition",
-    title: "Student Recognition",
+    title: "Meritorious Students Felicitation Programme",
     category: "Education",
     summary:
       "Encouraging students to perform their best by recognizing academic achievement and providing prizes to motivate them to continue learning and succeeding.",
@@ -47,7 +47,7 @@ export const projects = [
 
   {
     slug: "community-events",
-    title: "Community Events",
+    title: "Sports Awareness & Award Ceremony",
     category: "Community",
     summary:
       "Supporting and participating in small community events that bring local people together, encourage participation and create positive moments for the community.",
@@ -135,6 +135,13 @@ export const donationDetails = {
   bank: "State Bank of India",
 };
 
+export const registrationDetails = {
+  organizationType: "NGO",
+  registrationNo: "RS/KJR/253/RFSR/202516663",
+  registeredOn: "26 November 2025",
+  jurisdiction: "Assam",
+};
+
 // --- New exports below, added for the rebuilt homepage. Existing exports above are unchanged. ---
 
 export const siteStats = [
@@ -197,9 +204,9 @@ export const latestActivity = [
     showQr: true,
   },
   {
-    title: "Monthly Health Camp",
+    title: "Health & Sanitation",
     tag: "Upcoming Event",
-    body: "Free screening, nutrition counselling and referral support for families in Gossaigaon.",
+    body: "Free screening, counselling and referral support for families in Gossaigaon.",
     ctaHref: "/events",
     ctaLabel: "See Event Details",
     showQr: false,
@@ -213,28 +220,28 @@ export const aboutSummary = {
 };
 
 export const founderMessage = {
-  name: "Rubul Ahmed",
-  role: "Founder & General Secretary",
+  name: "Rubul Ahmed & Ariful Hassan",
+  role: "General Secretary & President",
   quote:
     "Every child deserves a fair start and every family deserves dignity. SMILE NGO exists to make that possible, one verified act of support at a time.",
 };
 
 export const objectives = [
   {
-    title: "Education access",
-    body: "Support first-generation learners with tutoring, learning materials and safe study spaces.",
+    title: "Education and learning",
+    body: "Support children and students through learning materials, mentoring and recognition that encourage continued study.",
   },
   {
-    title: "Health & nutrition",
-    body: "Run regular health camps, nutrition kits and counselling for children and mothers.",
+    title: "Health and wellbeing",
+    body: "Promote health camps, nutrition support and practical care for children and families in need.",
   },
   {
-    title: "Relief & dignity",
-    body: "Provide rapid relief — hygiene kits, blankets and essentials — during floods and emergencies.",
+    title: "Relief and community support",
+    body: "Respond to floods and other difficult circumstances with essentials and direct community assistance.",
   },
   {
-    title: "Transparent giving",
-    body: "Keep every donation, report and policy open for donors and the community to review.",
+    title: "Transparent community service",
+    body: "Encourage volunteer participation and keep programmes documented, accountable and open to the public.",
   },
 ];
 

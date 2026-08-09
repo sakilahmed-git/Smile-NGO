@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
 import Image from "next/image";
 import { usePathname } from "next/navigation";
@@ -21,7 +21,7 @@ import {
   Zap,
 } from "lucide-react";
 import { siteConfig } from "@/config/site.config";
-import { projects } from "@/config/content";
+import { projects, registrationDetails } from "@/config/content";
 import { usePwa } from "@/providers";
 import Marquee from "react-fast-marquee";
 
@@ -45,21 +45,26 @@ const mobileNav = [
 
 export function MarketingShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
-  const { canInstall, isStandalone, install, dismissInstallPrompt } = usePwa();
+  const { canInstall, isStandalone, isIos, isAndroid, install, dismissInstallPrompt } = usePwa();
   const [installVisible, setInstallVisible] = useState(false);
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   useEffect(() => {
-    if (!canInstall || isStandalone) {
+    if (isStandalone) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setInstallVisible(false);
       return;
     }
 
     const wasDismissed = window.localStorage.getItem("smile-pwa-dismissed");
     if (!wasDismissed) {
-      setInstallVisible(true);
+      const timer = window.setTimeout(() => {
+        setInstallVisible(true);
+      }, 1200);
+
+      return () => window.clearTimeout(timer);
     }
-  }, [canInstall, isStandalone]);
+  }, [canInstall, isStandalone, pathname]);
 
   // Lock body scroll while the drawer is open
   useEffect(() => {
@@ -75,6 +80,7 @@ export function MarketingShell({ children }: { children: React.ReactNode }) {
 
   // Close the drawer automatically on route change
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setDrawerOpen(false);
   }, [pathname]);
 
@@ -220,6 +226,25 @@ export function MarketingShell({ children }: { children: React.ReactNode }) {
             <p className="mt-3 max-w-md text-sm leading-6 text-[var(--color-muted)]">
               Transparent grassroots programs for education, health, nutrition and dignity.
             </p>
+            <div className="mt-5 rounded-2xl border border-emerald-900/10 bg-[#F7FCF8] p-4">
+              <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-[#087A59]">
+                Official registration
+              </p>
+              <div className="mt-3 space-y-2 text-sm text-[var(--color-muted)]">
+                <p>
+                  <span className="font-semibold text-[var(--color-ink)]">Type:</span>{" "}
+                  {registrationDetails.organizationType}
+                </p>
+                <p>
+                  <span className="font-semibold text-[var(--color-ink)]">Registration No.:</span>{" "}
+                  {registrationDetails.registrationNo}
+                </p>
+                <p>
+                  <span className="font-semibold text-[var(--color-ink)]">Jurisdiction:</span>{" "}
+                  {registrationDetails.jurisdiction}
+                </p>
+              </div>
+            </div>
           </div>
           <div>
             <p className="footer-title">Programs</p>
@@ -483,7 +508,13 @@ export function MarketingShell({ children }: { children: React.ReactNode }) {
                 </p>
                 <h2 className="mt-3 text-2xl font-semibold">Add SMILE NGO to your home screen</h2>
                 <p className="mt-3 text-sm leading-6 text-[var(--color-muted)]">
-                  Get faster access, offline support, and a cleaner mobile experience when you install the site.
+                  {canInstall
+                    ? "Your browser can prompt for installation. Use the button below to continue."
+                    : isIos
+                      ? "On iPhone or iPad, tap Share and choose Add to Home Screen."
+                      : isAndroid
+                        ? "On Android, open the browser menu and choose Install app or Add to Home Screen."
+                        : "Use your browser’s Install or Add to Home Screen option to keep the app on your device."}
                 </p>
               </div>
               <button
@@ -494,12 +525,33 @@ export function MarketingShell({ children }: { children: React.ReactNode }) {
                 Cancel
               </button>
             </div>
+
+            <div className="mt-5 rounded-2xl border border-emerald-900/10 bg-[#F7FCF8] p-4 text-sm text-[var(--color-muted)]">
+              {isIos ? (
+                <ol className="list-decimal space-y-2 pl-5">
+                  <li>Tap the Share button in Safari.</li>
+                  <li>Select Add to Home Screen.</li>
+                  <li>Confirm and the app will appear on your home screen.</li>
+                </ol>
+              ) : isAndroid ? (
+                <ol className="list-decimal space-y-2 pl-5">
+                  <li>Open the Chrome or Edge browser menu.</li>
+                  <li>Select Install app or Add to Home Screen.</li>
+                  <li>Confirm the prompt to finish installation.</li>
+                </ol>
+              ) : (
+                <p>Most desktop browsers will offer an Install or Add to Home Screen option from the address bar or browser menu.</p>
+              )}
+            </div>
+
             <div className="mt-6 flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
-              <button type="button" onClick={handleInstall} className="btn-primary w-full md:w-auto">
-                Install SMILE NGO
-              </button>
+              {canInstall ? (
+                <button type="button" onClick={handleInstall} className="btn-primary w-full md:w-auto">
+                  Install SMILE NGO
+                </button>
+              ) : null}
               <button type="button" onClick={handleCancel} className="btn-secondary w-full md:w-auto">
-                Not now
+                {canInstall ? "Not now" : "Close"}
               </button>
             </div>
           </div>

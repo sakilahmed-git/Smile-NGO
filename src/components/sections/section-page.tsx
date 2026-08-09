@@ -4,14 +4,16 @@ import {
   ArrowRight,
   BadgeCheck,
   HeartHandshake,
+  Landmark,
   ShieldCheck,
-  Users,
 } from "lucide-react";
 
 import {
   galleryItems,
   impactStats,
+  objectives,
   projects,
+  registrationDetails,
   reports,
   team,
 } from "@/config/content";
@@ -260,6 +262,62 @@ export function SectionPage({
           </div>
         </div>
       </section>
+
+      {id === "about" && (
+        <section className="page-shell mt-8 md:mt-12">
+          <div className="grid gap-5 lg:grid-cols-[1.02fr_0.98fr]">
+            <div className="rounded-[1.75rem] border border-emerald-900/8 bg-white p-6 shadow-[0_12px_40px_rgba(6,78,59,0.07)] md:p-7">
+              <div className="flex items-center gap-3">
+                <div className="grid h-11 w-11 place-items-center rounded-full bg-[#E8F7F1] text-[#087A59]">
+                  <Landmark size={18} />
+                </div>
+                <div>
+                  <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-[#087A59]">
+                    Official registration
+                  </p>
+                  <h2 className="mt-1 text-xl font-bold tracking-tight text-[#0B211A]">
+                    Registered NGO details
+                  </h2>
+                </div>
+              </div>
+
+              <div className="mt-5 grid gap-3 sm:grid-cols-2">
+                {[
+                  ["Organization Type", registrationDetails.organizationType],
+                  ["Registration No.", registrationDetails.registrationNo],
+                  ["Registered On", registrationDetails.registeredOn],
+                  ["Jurisdiction", registrationDetails.jurisdiction],
+                ].map(([label, value]) => (
+                  <div key={label} className="rounded-2xl bg-[#F8FBF9] px-4 py-3 ring-1 ring-emerald-900/5">
+                    <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--color-muted)]">
+                      {label}
+                    </p>
+                    <p className="mt-1 text-sm font-semibold text-[#0B211A]">{value}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="rounded-[1.75rem] bg-[#EAF6F1] p-6 md:p-7">
+              <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-[#087A59]">
+                Our objectives
+              </p>
+              <h2 className="mt-2 text-2xl font-bold tracking-tight text-[#0B211A] md:text-3xl">
+                Rooted in education, health, relief and community service
+              </h2>
+
+              <div className="mt-5 space-y-3">
+                {objectives.map((item) => (
+                  <div key={item.title} className="rounded-2xl bg-white/80 p-4 shadow-sm">
+                    <h3 className="font-semibold text-[#0B211A]">{item.title}</h3>
+                    <p className="mt-1 text-sm leading-6 text-[var(--color-muted)]">{item.body}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* =========================================================
           TEAM MEMBERS (right after hero, full list, team page only)
@@ -542,7 +600,7 @@ export function SectionPage({
             </h2>
 
             <p className="mt-2 text-sm leading-6 text-[var(--color-muted)]">
-              See how SMILE's programmes come together across communities.
+              See how SMILE&apos;s programmes come together across communities.
             </p>
 
             <Link

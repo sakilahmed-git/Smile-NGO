@@ -61,29 +61,27 @@ export async function FacebookUpdates() {
   <div
     className="
       relative
-      mx-auto
-      max-w-2xl
       overflow-hidden"
   >
     {/* Feed */}
-    <div>
-      <div className="overflow-hidden rounded-xl ml-[-5px]">
-        <iframe
-          title="SMILE NGO Facebook page"
-          className="h-[2200px] w-full border-0  sm:h-[520px] md:h-[600px] lg:h-[700px]"
-          loading="lazy"
-          src={`https://www.facebook.com/plugins/page.php?${new URLSearchParams({
-            href: siteConfig.social.facebookPageUrl,
-            tabs: "timeline",
-            height: "2200",
-            width: "380",
-            small_header: "false",
-            adapt_container_width: "true",
-            hide_cover: "false",
-            show_facepile: "true",
-          })}`}
-        />
-      </div>
+    <div className="p-0 w-full overflow-hidden">
+      <div className="w-full overflow-hidden rounded-lg border border-black/5">
+  <iframe
+    title="SMILE NGO Facebook page"
+    className="block h-[3000px] w-full border-0"
+    loading="lazy"
+    src={`https://www.facebook.com/plugins/page.php?${new URLSearchParams({
+      href: siteConfig.social.facebookPageUrl,
+      tabs: "timeline",
+      height: "3000",
+      width: "390",
+      adapt_container_width: "true",
+      small_header: "false",
+      hide_cover: "false",
+      show_facepile: "true",
+    })}`}
+  />
+</div>
     </div>
   </div>
 </section>

@@ -14,6 +14,8 @@ type NavigatorWithStandalone = Navigator & {
 type PwaContextValue = {
   canInstall: boolean;
   isStandalone: boolean;
+  isIos: boolean;
+  isAndroid: boolean;
   install: () => Promise<void>;
   dismissInstallPrompt: () => void;
 };
@@ -21,6 +23,8 @@ type PwaContextValue = {
 const PwaContext = createContext<PwaContextValue>({
   canInstall: false,
   isStandalone: false,
+  isIos: false,
+  isAndroid: false,
   install: async () => {},
   dismissInstallPrompt: () => {},
 });
@@ -31,6 +35,10 @@ export function PwaProvider({ children }: { children: React.ReactNode }) {
     typeof window !== "undefined" &&
     (window.matchMedia("(display-mode: standalone)").matches ||
       Boolean((window.navigator as NavigatorWithStandalone).standalone));
+  const isIos =
+    typeof window !== "undefined" && /iPad|iPhone|iPod/.test(window.navigator.userAgent);
+  const isAndroid =
+    typeof window !== "undefined" && /Android/i.test(window.navigator.userAgent);
 
   useEffect(() => {
     if ("serviceWorker" in navigator && process.env.NODE_ENV === "production") {
@@ -50,6 +58,8 @@ export function PwaProvider({ children }: { children: React.ReactNode }) {
     () => ({
       canInstall: Boolean(promptEvent),
       isStandalone,
+      isIos,
+      isAndroid,
       install: async () => {
         if (!promptEvent) return;
         await promptEvent.prompt();
@@ -58,7 +68,7 @@ export function PwaProvider({ children }: { children: React.ReactNode }) {
       },
       dismissInstallPrompt: () => setPromptEvent(null),
     }),
-    [isStandalone, promptEvent],
+    [isStandalone, isIos, isAndroid, promptEvent],
   );
 
   return <PwaContext.Provider value={value}>{children}</PwaContext.Provider>;
