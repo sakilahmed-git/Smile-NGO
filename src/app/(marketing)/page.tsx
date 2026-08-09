@@ -388,69 +388,205 @@ export default function HomePage() {
           </article>
 
           {/* Founder's desk */}
-          <article className="relative overflow-hidden rounded-[var(--radius-lg)] bg-gradient-to-br from-[#07543D] via-[var(--color-brand)] to-[#159A70] p-6 text-white shadow-soft md:p-8">
-            {/* decorative circles */}
-            <div
-              aria-hidden
-              className="pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full bg-white/10"
-            />
-            <div
-              aria-hidden
-              className="pointer-events-none absolute -bottom-20 -left-16 h-44 w-44 rounded-full bg-black/10"
-            />
+          {/* Founder's desk */}
+<article className="relative overflow-hidden rounded-[var(--radius-lg)] bg-gradient-to-br from-[#07543D] via-[var(--color-brand)] to-[#159A70] p-5 text-white shadow-soft sm:p-6 md:p-8">
 
-            <div className="relative flex h-full flex-col">
-              <div className="flex items-center justify-between gap-3">
-                <p className="min-w-0 text-[11px] font-semibold uppercase tracking-[0.2em] text-[#F1D080]">
-                  Founder&apos;s desk
-                </p>
-
-                <div className="flex-none rounded-full bg-white/10 px-3 py-1 text-[10px] font-medium text-white/80">
-                  SMILE NGO
-                </div>
-              </div>
-
-              {/* Founder */}
-              <div className="mt-6 flex min-w-0 items-center gap-4">
-                <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-full border-2 border-white/30 bg-white/15">
-  <Image
-    src="/images/ChatGPT Image Aug 9, 2026, 10_17_56 AM.png"
-    alt={founderMessage.name}
-    fill
-    className="object-cover"
-    sizes="64px"
+  {/* Decorative circles */}
+  <div
+    aria-hidden
+    className="pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full bg-white/10"
   />
-</div>
 
-                <div className="min-w-0">
-                  <p className="truncate text-lg font-semibold leading-tight">
-                    {founderMessage.name}
-                  </p>
-                  <p className="mt-1 text-xs text-white/75">
-                    {founderMessage.role}
-                  </p>
-                </div>
-              </div>
+  <div
+    aria-hidden
+    className="pointer-events-none absolute -bottom-20 -left-16 h-44 w-44 rounded-full bg-black/10"
+  />
 
-              {/* Message */}
-              <div className="mt-6 rounded-2xl border border-white/10 bg-black/10 p-4">
-                <p className="text-sm italic leading-7 text-white/90">
-                  “{founderMessage.quote}”
-                </p>
-              </div>
+  <div className="relative flex h-full flex-col">
 
-              <div className="mt-auto pt-5">
-                <Link
-                  href="/about"
-                  className="inline-flex items-center gap-2 text-sm font-semibold text-white transition-opacity hover:opacity-80"
+    {/* Header */}
+    <div className="flex items-center justify-between gap-3">
+      <p className="min-w-0 text-[10px] font-semibold uppercase tracking-[0.2em] text-[#F1D080] sm:text-[11px]">
+        Founder&apos;s desk
+      </p>
+
+      <div className="flex-none rounded-full bg-white/10 px-3 py-1 text-[9px] font-medium text-white/80 sm:text-[10px]">
+        SMILE NGO
+      </div>
+    </div>
+
+    {/* Heading */}
+    <div className="mt-5 sm:mt-6">
+      <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">
+        The vision behind{" "}
+        <span className="text-[#55E59B]">SMILE</span>
+      </h2>
+
+      <p className="mt-2 max-w-xl text-sm leading-6 text-white/70 sm:text-base sm:leading-7">
+        Led by passion, driven by purpose. Our founders work together
+        to create a lasting impact in the communities we serve.
+      </p>
+    </div>
+
+    {/* Founders */}
+    <div className="mt-6 grid grid-cols-2 gap-2.5 sm:mt-7 sm:gap-5">
+
+      {/* ================= FOUNDER 1 ================= */}
+      <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.045] p-2.5 sm:p-5">
+
+        <div className="flex flex-col items-center text-center">
+
+          {/* Profile */}
+          <div className="h-20 w-20 shrink-0 overflow-hidden rounded-full border-2 border-white/80 bg-white/10 sm:h-36 sm:w-36">
+            <img
+              src="/founders/jkFB_IMG_1786255989956.jpg.jpeg"
+              alt="Ariful Hassan Khan"
+              className="h-full w-full object-cover"
+            />
+          </div>
+
+          {/* Role */}
+          <div className="mt-2 rounded-full bg-[#22C77A]/80 px-2 py-1 text-[7px] font-semibold uppercase leading-tight tracking-[0.03em] text-white sm:mt-3 sm:px-3 sm:text-[10px]">
+            Co-Founder & President
+          </div>
+
+          {/* Name */}
+          <h3 className="mt-2 text-[13px] font-semibold leading-tight tracking-tight sm:mt-3 sm:text-2xl">
+            Ariful Hassan Khan
+          </h3>
+
+          {/* Gold divider */}
+          <div className="mt-2 flex w-full items-center gap-1 sm:gap-2">
+            <div className="h-px flex-1 bg-[#F1D080]/70" />
+            <div className="h-1.5 w-1.5 shrink-0 rounded-full bg-[#F1D080] sm:h-2 sm:w-2" />
+            <div className="h-px flex-1 bg-[#F1D080]/70" />
+          </div>
+
+          {/* Description */}
+          <p className="mt-2 text-[9px] leading-4 text-white/70 sm:mt-3 sm:text-sm sm:leading-6">
+            A visionary leader committed to empowering communities
+            through unity, service and sustainable development.
+          </p>
+
+          {/* Bottom statement */}
+          <div className="mt-3 w-full border-t border-white/10 pt-3 sm:mt-4 sm:pt-4">
+            <div className="flex items-start gap-2 sm:gap-3">
+
+              {/* Icon */}
+              <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-[#35D98B]/50 bg-[#35D98B]/10 sm:h-10 sm:w-10">
+                <svg
+                  viewBox="0 0 24 24"
+                  className="h-3.5 w-3.5 text-[#55E59B] sm:h-5 sm:w-5"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
                 >
-                  Meet our team
-                  <ArrowRight size={15} aria-hidden />
-                </Link>
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M15.75 7.5a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.5 20.25a7.5 7.5 0 0 1 15 0"
+                  />
+                </svg>
               </div>
-            </div>
-          </article>
 
+              <p className="text-left text-[8px] leading-3.5 text-white/65 sm:text-sm sm:leading-5">
+                The vision behind SMILE — turning ideas into meaningful, lasting change.
+              </p>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+
+      {/* ================= FOUNDER 2 ================= */}
+      <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.045] p-2.5 sm:p-5">
+
+        <div className="flex flex-col items-center text-center">
+
+          {/* Profile */}
+          <div className="h-20 w-20 shrink-0 overflow-hidden rounded-full border-2 border-white/80 bg-white/10 sm:h-36 sm:w-36">
+            <img
+              src="/founders/rubul-ahmed.jpeg"
+              alt="Rubul Ahmed Sheikh"
+              className="h-full w-full object-cover"
+            />
+          </div>
+
+          {/* Role */}
+          <div className="mt-2 rounded-full bg-[#22C77A]/80 px-2 py-1 text-[7px] font-semibold uppercase leading-tight tracking-[0.03em] text-white sm:mt-3 sm:px-3 sm:text-[10px]">
+            Co-Founder & G. Secretary
+          </div>
+
+          {/* Name */}
+          <h3 className="mt-2 text-[13px] font-semibold leading-tight tracking-tight sm:mt-3 sm:text-2xl">
+            Rubul Ahmed Sheikh
+          </h3>
+
+          {/* Gold divider */}
+          <div className="mt-2 flex w-full items-center gap-1 sm:gap-2">
+            <div className="h-px flex-1 bg-[#F1D080]/70" />
+            <div className="h-1.5 w-1.5 shrink-0 rounded-full bg-[#F1D080] sm:h-2 sm:w-2" />
+            <div className="h-px flex-1 rounded-full bg-[#F1D080]/70" />
+          </div>
+
+          {/* Description */}
+          <p className="mt-2 text-[9px] leading-4 text-white/70 sm:mt-3 sm:text-sm sm:leading-6">
+            Dedicated to thoughtful planning, clear coordination, and making sure every initiative moves forward with purpose. </p>
+
+          {/* Bottom statement */}
+          <div className="mt-3 w-full border-t border-white/10 pt-3 sm:mt-4 sm:pt-4">
+            <div className="flex items-start gap-2 sm:gap-3">
+
+              {/* Icon */}
+              <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-[#35D98B]/50 bg-[#35D98B]/10 sm:h-10 sm:w-10">
+                <svg
+                  viewBox="0 0 24 24"
+                  className="h-3.5 w-3.5 text-[#55E59B] sm:h-5 sm:w-5"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                >
+                  <circle cx="12" cy="12" r="4" />
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M12 3v2M12 19v2M3 12h2M19 12h2"
+                  />
+                </svg>
+              </div>
+
+              <p className="text-left text-[8px] leading-3.5 text-white/65 sm:text-sm sm:leading-5">
+                The backbone of SMILE’s execution — turning vision into action that creates real impact.
+              </p>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+    {/* Footer */}
+    <div className="mt-5 flex justify-center sm:mt-6 md:justify-end">
+      <Link
+        href="/about"
+        className="group inline-flex items-center gap-2 text-sm font-semibold text-[#55E59B] transition-colors hover:text-white"
+      >
+        Meet our team
+
+        <ArrowRight
+          size={16}
+          className="transition-transform duration-300 group-hover:translate-x-1"
+          aria-hidden
+        />
+      </Link>
+    </div>
+
+  </div>
+</article>
         </div>
       </section>
 
