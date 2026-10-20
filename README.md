@@ -63,3 +63,8 @@ Open [http://localhost:3000](http://localhost:3000). Check the project files and
 ## Security notes
 
 Never commit service credentials, private environment files, or personal donor data. Before treating administrative or donation workflows as production-ready, verify access controls, abuse protection, data handling, backups, and the deployed implementation.
+
+
+---
+
+README order refresh: October 2026.
