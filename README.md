@@ -1,23 +1,23 @@
 # SMILE NGO — Digital Platform for Community Impact
 
-> A digital presence for a non-profit working with underserved communities in Kokrajhar and Gossaigaon, Assam.
+> A mobile-first web platform intended to help an NGO present its mission, share community work, and give supporters ways to engage.
 
-🌐 **Public website:** [smilengo.org.in](https://smilengo.org.in)  
-📦 **Repository status:** The current repository README describes an architecture/skeleton implementation. The public website is deployed separately; this repository should not be assumed to contain every feature currently visible on the live site.
+📦 **Repository:** [Smile-NGO](https://github.com/sakilahmed-git/Smile-NGO)  
+🌐 **Public demo:** No verified live URL is currently recorded in this repository.
 
 ## About the project
 
-SMILE NGO focuses on community support and development. The website gives the organisation a place to communicate its mission, share updates, present its work, and help visitors discover ways to engage.
+SMILE NGO is being developed as a digital home for a non-profit organisation: a place to communicate its mission, showcase projects and activities, publish updates, and help visitors discover ways to participate.
 
-The codebase is structured as a modern, mobile-first web application, with separate areas for public pages, authentication, administration, shared UI, and data-access services.
+The codebase is organised as a modern web application, with separate areas for public pages, authentication, administration, reusable UI, and data-access services.
 
-## Why it matters
+## Why this project matters
 
-- **Real-world impact:** supports the digital presence of a community-focused non-profit.
+- **Real-world use case:** designed around an organisation's outreach and community engagement.
 - **Modern application architecture:** separates routes, reusable components, hooks, services, types, providers, and shared utilities.
-- **Content and outreach foundations:** planned/structured areas cover projects, events, gallery, blogs, testimonials, volunteers, and newsletters.
-- **Donation workflow concept:** supports a UPI QR → payment screenshot submission → administrator verification flow; this is not a payment-gateway integration.
-- **Installable-web-app foundation:** includes PWA-related setup.
+- **Content and outreach foundations:** structured areas cover projects, events, gallery, blogs, testimonials, volunteers, and newsletters.
+- **Donation workflow concept:** documents a UPI QR → payment screenshot submission → administrator verification flow. This is not a payment-gateway integration.
+- **PWA direction:** includes tooling for a progressive web app experience.
 
 ## Technology stack
 
@@ -34,10 +34,22 @@ The codebase is structured as a modern, mobile-first web application, with separ
 
 | Area | Status |
 |---|---|
-| Public website | Deployed at the link above |
-| Repository implementation | Architecture/skeleton according to the current codebase README |
-| Admin and data workflows | Do not assume production-ready without verifying the deployed implementation |
-| Online payment processing | Not provided by the documented UPI screenshot-verification flow |
+| Repository implementation | Architecture/skeleton, according to the previous README |
+| Public live demo | No verified URL recorded |
+| Admin and data workflows | Must be verified in the running application before describing as complete |
+| Online payment processing | Not provided by the documented screenshot-verification flow |
+
+This repository is currently best described as a structured foundation, not a fully implemented production platform. Update this section when the deployed build and key workflows have been verified.
+
+## Project structure
+
+- `src/app` — marketing, admin, authentication, and API routes
+- `src/components` — reusable interface components
+- `src/services` — Firebase and Cloudinary data-access layer
+- `src/hooks` — domain-specific React hooks
+- `src/types` — shared TypeScript interfaces
+- `src/providers` — application-wide providers
+- `src/lib` — utilities, validation, SEO, and accessibility helpers
 
 ## Run locally
 
@@ -46,22 +58,8 @@ npm install
 npm run dev
 ```
 
-Then open [http://localhost:3000](http://localhost:3000). Check the project files and environment example for required configuration before enabling backend services.
-
-## Project structure
-
-- `src/app` — marketing, admin, authentication, and API routes
-- `src/components` — reusable interface components
-- `src/services` — Firebase and Cloudinary access layer
-- `src/hooks` — domain-specific React hooks
-- `src/types` — shared TypeScript interfaces
-- `src/providers` — application-wide providers
-- `src/lib` — utilities, validation, SEO, and accessibility helpers
+Open [http://localhost:3000](http://localhost:3000). Check the project files and environment example for any required configuration before enabling backend services.
 
 ## Security notes
 
-Never commit Firebase secrets, service credentials, private environment files, or personal donor data. Before treating administrative or donation workflows as production-ready, verify access controls, abuse protection, data handling, backups, and the deployed implementation.
-
----
-
-Built to help community work be easier to discover and support.
+Never commit service credentials, private environment files, or personal donor data. Before treating administrative or donation workflows as production-ready, verify access controls, abuse protection, data handling, backups, and the deployed implementation.
